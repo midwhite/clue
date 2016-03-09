@@ -5,10 +5,15 @@ class MessagesController < ApplicationController
   add_breadcrumb 'TOP', :root_path
 
   def index
-    @messages = Message.order(updated_at: :desc).includes(:sender, :receiver)
-    @inbox = @messages.where(receiver_id: current_user.id, sent: 1)
-    @outbox = @messages.where(sender_id: current_user.id)
-    
+    @inbox = Message.where(receiver_id: current_user.id, sent: 1)
+                    .order(updated_at: :desc)
+    @inbox_users = Message.where(receiver_id: current_user.id, sent: 1)
+                        .order(updated_at: :desc).select(:sender_id).uniq
+    @outbox = Message.where(sender_id: current_user.id)
+                      .order(updated_at: :desc)
+    @outbox_users = Message.where(sender_id: current_user.id)
+                        .order(updated_at: :desc).select(:receiver_id).uniq
+      
     add_breadcrumb 'メッセージボックス', messages_path
   end
 
