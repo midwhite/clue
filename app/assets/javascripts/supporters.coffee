@@ -13,3 +13,8 @@ $ ->
     idx = parseInt(Math.random() * count)
     $('.students-index-image').eq(i).css 'background-color', $colors[idx]
     i++;
+    
+    
+
+  num = parseInt($('.reputation').text())
+  $('.reputation').text(new Array(num+1).join("★");)
