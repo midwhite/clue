@@ -1,70 +1,75 @@
 <div class=container>
-  
- <h1>メッセージ一覧</h1>
-  <p>やりとりしたメッセージです。</p>
-  
-   <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#jyushin">受信箱（<%= @inbox.count %>件）</a></li>
-        <li><a data-toggle="tab" href="#soushin">送信箱（<%= @outbox.count %>件）</a></li>
+  <h1>ダイレクトメッセージ</h1>
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#jyushin">受信（<%= @inbox_users.count %>件）</a></li>
+      <li><a data-toggle="tab" href="#soushin">送信（<%= @outbox_users.count %>件）</a></li>
     </ul>
     
-     <div class="tab-content">
+    <div class="tab-content">
  
-     <div id="jyushin" class="tab-pane fade in active">
-       <table class="table table-bordere">
-           <tr>
-            <th class="mailbox-no">No</th>
-            <th class="mailbox-title">件名</th>
-            <th class="mailbox-user">送信者</th>
-            <th class="mailbox-opened">既読</th>
-           </tr>
-      <tbody>
-       <% @inbox.each.with_index do |msg, i| %>
-        <tr>
-        <td><%= link_to @inbox.count-i, new_message_path(receiver_id: msg.sender_id) %></td>
-        <% if msg.title.present? %>
-        <td><%= link_to msg.title, new_message_path(receiver_id: msg.sender_id), class: 'title' %></td>
-        <% else %>
-        <td><%= link_to '無題', new_message_path(receiver_id: msg.sender_id), class: 'title' %></td>
-        <% end %>
-        <td><%= link_to msg.sender.username, supporter_path(msg.sender_id) %></td>
-        <% if msg.opened.present? %>
-        <td><%= image_tag'top/icon_6m_48.png' %></td>
-        <% else %>
-        <td><%= image_tag'top/icon_1r_48.png' %></td>
-        <% end %>
-        </tr>
-        <% end %>
-      </tbody>
-     </table>
-   </div><!-- //end of jyushin -->
+    <div id="jyushin" class="tab-pane fade in active">
+      <table class="table table-bordere">
 
-<div id="soushin" class="tab-pane fade">
-<table class="table table-bordere">
-  <thead>
-    <tr>
-      <th class="mailbox-no">No</th>
-      <th class="mailbox-title">件名</th>
-      <th class="mailbox-user">宛先</th>
-      <th class="mailbox-opened">既読</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @outbox.each.with_index do |msg, i| %>
-      <tr>
-        <td><%= link_to @outbox.count-i, new_message_path(receiver_id: msg.receiver_id) %></td>
-        <td><%= link_to msg.title, new_message_path(receiver_id: msg.receiver_id), class: 'title' %></td>
-        <td><%= link_to msg.receiver.username, supporter_path(msg.receiver_id) %></td>
-        <% if msg.opened.present? %>
-        <td><%= image_tag'top/icon_6m_48.png' %></td>
-        <% else %>
-        <td><%= image_tag'top/icon_1r_48.png' %></td>
-        <% end %>
-      </tr>
-    <% end %>
-    </tbody>
-   </table>
-   </div><!-- //end of soushin -->
+        <tbody>
+          <% @inbox_users.each.with_index do | inbox_user, i | %>
+            <% user = User.find(inbox_user.sender_id) %>
+            <% latest_message = @inbox
+                                  .where(sender_id: user.id)
+                                  .first %>
+            <tr>
+              <td>
+                <% if user.avatar.present? %>
+                  <%= image_tag(user.avatar(:thumb)) %>
+                <% else %>
+                  <%= image_tag('top/clue.png', class: "no-image", width: 100, height: 100) %>
+                <% end %>
+                <p><%= distance_of_time_in_words_to_now(latest_message.updated_at) %> 前</p>
+              </td>
+              <td>
+                <p><%= user.username %> とのメッセージ</p>
+                <% if latest_message.message.present? %>
+                  <%= latest_message.message %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to "メッセージを見る", new_message_path(receiver_id: user.id) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div><!-- //end of jyushin -->
+
+    <div id="soushin" class="tab-pane fade">
+      <table class="table table-bordere">
+        <tbody>
+          <% @outbox_users.each.with_index do | outbox_user, i | %>
+            <% user = User.find(outbox_user.receiver_id) %>
+            <% latest_message = @outbox.where(receiver_id: user.id)
+                                  .first %>
+            <tr>
+              <td>
+                <% if user.avatar.present? %>
+                  <%= image_tag(user.avatar(:thumb)) %>
+                <% else %>
+                  <%= image_tag('top/clue.png', class: "no-image", width: 100, height: 100) %>
+                <% end %>
+                <p><%= distance_of_time_in_words_to_now(latest_message.updated_at) %> 前</p>
+              </td>
+              <td>
+                <p><%= user.username %>とのメッセージ</p>
+                <% if latest_message.message.present? %>
+                  <%= latest_message.message %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to "メッセージを見る", new_message_path(receiver_id: user.id) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div><!-- //end of soushin -->
   </div><!-- //end of .tab-content -->
 </div><!-- //end of containern -->
 
