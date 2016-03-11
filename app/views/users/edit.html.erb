@@ -1,12 +1,12 @@
 <div class="user-show-profile1">
   <h1>登録情報の編集</h1>
   <table class="table table-bordere">
-      <%= form_for @user do |f| %>
+    <%= form_for @user do |f| %>
     <tr>
      <th><%= f.label :avatar, 'プロフィール画像' %></th>
      <td><%= f.file_field :avatar %></td>
     </tr>
-     <tr>
+    <tr>
      <th><%= f.label :name, '氏名' %></th>
      <td><%= f.text_field  :name %></td>
     </tr>
@@ -27,14 +27,14 @@
       <td><%= f.text_field :school %></td>
     </tr>
     <tr>
-      <th><% if current_user.user_type == 1 %>
-      <%= f.label :grade, '学年'%></th>
-      <td><%= f.select :grade, @grade%></td>
+      <% if current_user.user_type == 1 %>
+       <th><%= f.label :grade, '学年'%></th>
+       <td><%= f.select :grade, @grade%></td>
       <% else %>
-      <th><%= f.label :job, '職業' %></th>
-      <td><%= f.select :job, @job%></td>
+       <th><%= f.label :job, '職業' %></th>
+       <td><%= f.select :job, @job%></td>
       <% end %>
-      </tr>
+    </tr>
     <tr>
       <th><%= f.label :absent_span, '学校に行かなかった時期' %></th>
       <td><%= f.select :absent_span, @grade %></td>
@@ -102,10 +102,11 @@
   <th><%= f.label :search_permit, '検索表示許可', class: "label_class" %></th>
   <td><%= f.select :search_permit, [['許可する', 1],['許可しない', 0]] %></td>
      </tr>
-    </table>
+
   <% end %>
-    <%= f.submit('編集') %>
-     <%= f.submit('キャンセル') %>
-   
+   </table>
+  <%= f.submit('編集') %>
+  <%= f.submit('キャンセル') %>
 <% end %>
-</div>
+
+ </div>

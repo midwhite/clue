@@ -1,14 +1,11 @@
 <div class="table-responsive">
-
- <div class="user-show-profile">
   <center><h1>現在の登録情報</h1></center>
  </div>
-
+ <div class="table-user">
  <table class="table table-bordered">
-  <tbody>
      <tr>
-     <th>プロフィール画像</th>
-     <td><%= @user.avatar %></td>
+     <th class="col-xs-4 col-ms-4 col-md-5 col-lg-5">プロフィール画像</th>
+     <td class="avatar"><%= image_tag(@user.avatar(:medium)) %></td>
     </tr>
      <th>氏名</th>
      <td><%= current_user.name %></td>
@@ -87,7 +84,6 @@
      <th>プロフィール</th>
      <td><p><%= simple_format(current_user.profile) %></p></td>
     </tr>
-  </tbody>
  </table>
 </div><!-- end of table-responsive -->
 

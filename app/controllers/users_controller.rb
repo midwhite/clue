@@ -24,7 +24,13 @@ class UsersController < ApplicationController
     if params[:commit] == 'キャンセル'
       redirect_to action: :show and return
     end
-    @user = User.find(current_user.id).update(submit_params)
+    @user = User.find(params[:id])
+    if @user != current_user
+      redirect_to root_url
+      return
+    end
+    
+    @user.update(submit_params)
     @trigger = AbsenceTrigger.find_by(user_id: current_user.id)
     if params[:user][:absence_trigger_attributes].present?
       if @trigger.present?

@@ -96,7 +96,7 @@
               <div class="review-new">
               <%= form_for @review do |f| %>
                <p><%= f.label :review, 'レビュー' %></p>
-               <p><%= f.label :reputation, '満足度' %> <%= f.select :reputation, [['★5',5],['★4',4],['★3',3],['★2',2],['★1',1]],class:"hoshi" %></p>
+               <p><%= f.label :reputation, '満足度' %> <%= f.select :reputation, [['★★★★★',5],['★★★★',4],['★★★',3],['★★',2],['★',1]],class:"hoshi" %></p>
                 <br />
                 <%= f.text_area :review, size: '45x5' %>
                 <%= f.hidden_field :user_id, value: current_user.id %>

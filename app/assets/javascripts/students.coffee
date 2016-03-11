@@ -3,10 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
   $colors = [
-    '#000'
-    '#333'
-    '#666'
-    '#999'
+    '#1d96d5'
+    '#efea3a'
+    '#21aca8'
   ]
   count = $colors.length
   i = 0
