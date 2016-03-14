@@ -18,13 +18,14 @@
             <% end %>
             <span class="offer-index-infobox">
                 <h3><%= link_to offer.ticket.title, offer_path(offer.id) %></h3>
-            <% if current_user.user_type != 3 %>
+            <% if current_user.user_type != 3 && current_user.user_type != 4 %>
                 <p>先輩：<%= link_to offer.ticket.user.username, supporter_path(offer.ticket.user.id) %></p>
             <% else %>
                 <p>申込者：<%= link_to offer.user.username, student_path(offer.user.id) %></p>
             <% end %>
                 <p>申込日時：<%= offer.created_at.strftime("%Y年%m月%d日 %H時%M分") %></p>
-            <% if current_user.user_type != 3 && offer.updated == 1 %>
+            <% if current_user.user_type != 3 && current_user.user_type != 4
+                && offer.updated == 1 %>
                 <p>更新あり</p>
             <% end %>
             </span>
@@ -34,8 +35,8 @@
             <p><%= image_tag('top/clue.png') %></p>
             <span class="offer-index-infobox">
                 <h3><%= link_to '退会済みユーザーのチケット', offer_path(offer.id) %></h3>
-            <% if current_user.user_type != 3 %>
-                <p>先輩：退会済み</p>
+            <% if current_user.user_type != 3 && current_user.user_type != 4 %>
+                <p>先輩・カウンセラー：退会済み</p>
             <% else %>
                 <p>申込者：退会済み</p>
             <% end %>

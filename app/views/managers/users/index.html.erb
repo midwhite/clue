@@ -41,6 +41,13 @@
                     <td><%= @supporters.where(permit_info_mail: 1).count %>名</td>
                 </tr>
                 <tr>
+                    <th>カウンセラー</th>
+                    <td><%= @counselors.count %>名</td>
+                    <td><%= @counselors.where(sex: '男性').count %>名／<%= @counselors.where(sex: '女性').count %>名</td>
+                    <td><%= @counselors.where(area: '東京都').count %>名</td>
+                    <td><%= @counselors.where(permit_info_mail: 1).count %>名</td>
+                </tr>
+                <tr>
                     <th>合計</th>
                     <td><%= @users.count %>名</td>
                     <td><%= @users.where(sex: '男性').count %>名／<%= @users.where(sex: '女性').count %>名</td>

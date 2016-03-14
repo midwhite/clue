@@ -11,8 +11,9 @@ class Managers::UsersController < ApplicationController
     @students = @users.where(user_type: 1)
     @parents = @users.where(user_type: 2)
     @supporters = @users.where(user_type: 3)
-    @types = [@students, @parents, @supporters]
-    @caption = ['生徒情報', '保護者情報', '先輩情報']
+    @counselors = @users.where(user_type: 4)
+    @types = [@students, @parents, @supporters, @counselors]
+    @caption = ['生徒情報', '保護者情報', '先輩情報', 'カウンセラー情報']
     @q = User.search
   end
 

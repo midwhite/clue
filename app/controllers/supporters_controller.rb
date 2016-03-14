@@ -4,13 +4,13 @@ class SupportersController < ApplicationController
   add_breadcrumb '先輩を探す', :search_supporters_path
 
   def index
-    @supporters = User.where(user_type: 3)
+    @supporters = User.where(user_type: [3, 4])
                     .includes(:ticket)
                     .page(params[:page])
   end
   
   def search
-    @supporters = User.where(user_type: 3)
+    @supporters = User.where(user_type: [3, 4])
                     .search_params("profile", params[:keyword])
                     .search_params("area", params[:area])
                     .search_params("sex", params[:sex])

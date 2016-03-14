@@ -4,7 +4,7 @@ class OffersController < ApplicationController
   before_action :authenticate_user!, :full_profile
   def index
     add_breadcrumb '申込管理'
-    if current_user.user_type != 3
+    if current_user.user_type != 3 && current_user.user_type != 4
       # 生徒もしくは保護者
       @offers = Offer.where(user_id: current_user.id).order(updated_at: :desc)
       @offers_name = ['確定待ち', '調整中', '申込履歴']
@@ -13,7 +13,7 @@ class OffersController < ApplicationController
         '先輩の承認待ちです。メッセージをやりとりして調整を進めましょう。',
         '過去に販売したチケットです。']
     else
-      # 先輩
+      # 先輩もしくはカウンセラー
       @offers = current_user.ticket.offers
       @offers_name = ['確定待ち', '調整中', '販売履歴']
       @status_message = [
@@ -34,7 +34,7 @@ class OffersController < ApplicationController
     @ticket = @offer.ticket
     @hour = hour_params
     @price = price_params
-    if current_user.user_type != 3
+    if current_user.user_type != 3 && current_user.user_type != 4
       @offer.update(updated: 0)
     end
   end
@@ -118,7 +118,7 @@ class OffersController < ApplicationController
     end
 
     # 変更未読フラグを立てる
-    if current_user.user_type == 3
+    if current_user.user_type == 3 || current_user.user_type == 4
       @offer.update(updated: 1)
     end
 

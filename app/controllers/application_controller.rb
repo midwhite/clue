@@ -56,7 +56,7 @@ class ApplicationController < ActionController::Base
   end
   
   def user_type_params
-    user_type_params = [['生徒', 1], ['保護者', 2], ['経験者', 3]]    
+    user_type_params = [['生徒', 1], ['保護者', 2], ['経験者', 3], ['カウンセラー', 4]]    
   end
 
 

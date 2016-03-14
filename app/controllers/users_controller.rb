@@ -242,6 +242,8 @@ class UsersController < ApplicationController
       return '保護者'
     elsif params[:user][:user_type].to_i == 3
       return '不登校経験者'
+    elsif params[:user][:user_type].to_i == 4
+      return 'カウンセラー'
     end
   end
 
@@ -250,8 +252,10 @@ class UsersController < ApplicationController
   end
 
   def complete_registration_info
-    if current_user.user_type != 3
+    if current_user.user_type != 3 && current_user.user_type != 4
       params[:user][:family_name].present? && params[:user][:first_name].present? && params[:user][:family_name_kana].present? && params[:user][:first_name_kana].present? && params[:user][:grade].present?
+    elsif current_user.user_type == 4
+      params[:user][:family_name].present? && params[:user][:first_name].present? && params[:user][:family_name_kana].present? && params[:user][:first_name_kana].present?
     else
       params[:user][:family_name].present? && params[:user][:first_name].present? && params[:user][:family_name_kana].present? && params[:user][:first_name_kana].present? && params[:user][:job].present?
     end
