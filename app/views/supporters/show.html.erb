@@ -131,7 +131,7 @@
  
     <% if user_signed_in? %>
       <div class="user-show-edit-btn">
-        <% if current_user.user_type != 3 %>
+        <% if current_user.user_type != 3 && current_user.user_type != 4 %>
           <ul>
             <li>
               <%= link_to 'チケット購入', ( @ticket.nil? ? 'javascript:void(0);' : new_offer_path(ticket_id: @ticket.id)) %>

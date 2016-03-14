@@ -17,7 +17,7 @@
       <% @participants.where(status: st).each do |pt| %>
         <% if pt.user.user_type == 1 %>
           <li><%= link_to pt.user.name, student_path(pt.user_id) %></li>
-        <% elsif pt.user.user_type == 3 %>
+        <% elsif pt.user.user_type == 3 || pt.user.user_type == 4 %>
           <li><%= link_to pt.user.name, supporter_path(pt.user_id) %></li>
         <% end %>
       <% end %>

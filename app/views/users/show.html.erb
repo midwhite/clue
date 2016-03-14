@@ -31,6 +31,7 @@
      <th>学年</th>
      <td><%= current_user.grade %></td>
     </tr>
+ <% elsif current_user.user_type == 4 #do nothing. %>
  <% else %>
     <tr>
      <th>職業</th>

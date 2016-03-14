@@ -2,7 +2,7 @@ class TicketsController < ApplicationController
   before_action :authenticate_user!, :full_profile
   
  add_breadcrumb 'TOP', :root_path
- add_breadcrumb 'マイページ', :user_path
+ add_breadcrumb 'チケットページ'
 
   def new
     @price = price_params
@@ -62,8 +62,6 @@ class TicketsController < ApplicationController
       return 0
     end
   end
-  add_breadcrumb '編集', :edit_ticket_path
 end
 
- 
   
