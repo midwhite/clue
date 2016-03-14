@@ -10,7 +10,7 @@
   </ul>
 <% end %>
   <div class="space">
-    <% if @receiver.user_type == 3 %>
+    <% if @receiver.user_type == 3 || @receiver.user_type == 4 %>
       <%= link_to supporter_path(@receiver.id) do %>
         宛先：<%= @receiver.username %>
       <% end %>

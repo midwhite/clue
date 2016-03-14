@@ -29,7 +29,7 @@
   <% if user_signed_in? %>
     <% if current_user.user_type == 1 || current_user.user_type == 2 %>
       <%= link_to '先輩検索', supporters_path %>
-    <% elsif current_user.user_type == 3 %>
+    <% elsif current_user.user_type == 3 || current_user.user_type == 4 %>
       <%= link_to '生徒検索', students_path %>
     <% end %>
       <%= link_to 'ダイアリーを読む', diaries_path %>
