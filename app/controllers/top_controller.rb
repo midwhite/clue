@@ -23,6 +23,9 @@ class TopController < ApplicationController
 
   def student_user
   end
+  
+  def counselor
+  end
 
   def supporter
     @user = User.new

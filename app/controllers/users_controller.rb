@@ -241,7 +241,7 @@ class UsersController < ApplicationController
     elsif params[:user][:user_type].to_i == 2
       return '保護者'
     elsif params[:user][:user_type].to_i == 3
-      return '不登校経験者'
+      return '経験者'
     end
   end
 
@@ -256,6 +256,8 @@ class UsersController < ApplicationController
       params[:user][:family_name].present? && params[:user][:first_name].present? && params[:user][:family_name_kana].present? && params[:user][:first_name_kana].present? && params[:user][:job].present?
     end
   end
+  
+
 
   def reputation_params
     reputation = 0

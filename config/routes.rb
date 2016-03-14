@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/terms' => 'top#terms'
   get '/legal' => 'top#legal'
   get '/contact' => 'top#contact'
+  get '/counselor' => 'top#counselor'
 
   resources :users do
     collection do
@@ -41,6 +42,12 @@ Rails.application.routes.draw do
   end
 
   resources :supporters do
+    collection do
+      get 'search'
+    end
+  end
+  
+  resources :counselors do
     collection do
       get 'search'
     end

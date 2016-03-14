@@ -18,15 +18,25 @@
                                   .first %>
             <tr>
               <td>
-                <% if user.avatar.present? %>
-                  <%= image_tag(user.avatar(:thumb)) %>
-                <% else %>
-                  <%= image_tag('top/clue.png', class: "no-image", width: 100, height: 100) %>
+                <% if user.user_type == 3
+                  user_path = supporter_path(user.id)
+                elsif user.user_type == 1 || user.user_type == 2
+                  user_path = student_path(user.id)
+                else
+                  user_path = root_path
+                end %>
+                <%= link_to user_path do %>
+                  <% if user.avatar.present? %>
+                    <%= image_tag(user.avatar(:thumb)) %>
+                  <% else %>
+                    <%= image_tag('top/clue.png', class: "no-image", width: 100, height: 100) %>
+                  <% end %>
                 <% end %>
                 <p><%= distance_of_time_in_words_to_now(latest_message.updated_at) %> 前</p>
               </td>
               <td>
-                <p><%= user.username %> とのメッセージ</p>
+                <%# CSS で全般的に <a> はブロック要素になっているので %>
+                <p><%= link_to user.username, user_path, style: "display: inline;" %> との最新メッセージ</p>
                 <% if latest_message.message.present? %>
                   <%= latest_message.message %>
                 <% end %>
@@ -49,15 +59,26 @@
                                   .first %>
             <tr>
               <td>
-                <% if user.avatar.present? %>
-                  <%= image_tag(user.avatar(:thumb)) %>
-                <% else %>
-                  <%= image_tag('top/clue.png', class: "no-image", width: 100, height: 100) %>
+                <% if user.user_type == 3
+                  user_path = supporter_path(user.id)
+                elsif user.user_type == 1 || user.user_type == 2
+                  user_path = student_path(user.id)
+                else
+                  #通常ありえないのでルートに飛ばす
+                  user_path = root_path
+                end %>
+                <%= link_to user_path do %>
+                  <% if user.avatar.present? %>
+                    <%= image_tag(user.avatar(:thumb)) %>
+                  <% else %>
+                    <%= image_tag('top/clue.png', class: "no-image", width: 100, height: 100) %>
+                  <% end %>
                 <% end %>
                 <p><%= distance_of_time_in_words_to_now(latest_message.updated_at) %> 前</p>
               </td>
               <td>
-                <p><%= user.username %>とのメッセージ</p>
+                <%# CSS で全般的に <a> はブロック要素になっているので %>
+                <p><%= link_to user.username, user_path, style: "display: inline;" %>との最新メッセージ</p>
                 <% if latest_message.message.present? %>
                   <%= latest_message.message %>
                 <% end %>

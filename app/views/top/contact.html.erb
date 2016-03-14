@@ -1,1 +1,53 @@
-contact.html.erb
+<div class="content col-sm-12">
+<h2>メールによるお問い合わせ</h2>
+<p>
+プライバシーポリシーをご確認、ご同意の上、送信ボタンを押してください。<br>
+お問い合わせの回答は、受付日から3営業日以内をめどにご返信差し上げます。
+</p>
+<form class="form-horizontal">
+<div class="form-group">
+<label for="inputName" class="col-md-2 control-label">氏名</label>
+<div class="col-md-10">
+<input type="text" class="form-control" id="inputName" placeholder="例）久利生　太郎">
+</div>
+</div>
+<div class="form-group">
+<label for="inputEmail" class="col-md-2 control-label">メールアドレス</label>
+<div class="col-md-10">
+<input type="email" class="form-control" id="inputEmail" placeholder="例）taro.
+kuryu@example.com">
+</div>
+</div>
+<div class="form-group">
+<label for="inputTel" class="col-md-2 control-label">電話番号</label>
+<div class="col-md-10">
+<input type="tel" class="form-control" id="inputTel" placeholder="例）031234567
+8">
+</div>
+</div>
+<div class="form-group">
+<label for="inputContent" class="col-md-2 control-label">お問い合わせ内容</label>
+<div class="col-md-10">
+<textarea class="form-control" id="inputContent" rows="4" placeholder="具体的に
+お書きください"></textarea>
+</div>
+</div>
+<div class="form-group">
+<div class="col-md-offset-2 col-md-10">
+<div class="checkbox">
+<label>
+<input type="checkbox"><%= link_to "プライバシーポリシーに同意",privacy_path %>
+</label>
+</div>
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-offset-2 col-sm-10">
+<button type="submit" class="btn btn-default btn-primary btn-block">お問い合わせ
+を送信</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>

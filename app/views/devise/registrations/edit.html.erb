@@ -1,16 +1,15 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
+<h1>アカウント情報を編集 </h1>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
-
+  
   <div class="field">
     <%= f.label :user_type, '種別' %><br />
     <%= f.select :user_type, @user_type_params, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :email, 'メールアドレス' %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.label :email, 'メールアドレス'%><br />
+    <%= f.email_field :email, autofocus: true%>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
