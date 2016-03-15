@@ -241,13 +241,9 @@ class UsersController < ApplicationController
     elsif params[:user][:user_type].to_i == 2
       return '保護者'
     elsif params[:user][:user_type].to_i == 3
-<<<<<<< HEAD
-      return '経験者'
-=======
       return '不登校経験者'
     elsif params[:user][:user_type].to_i == 4
       return 'カウンセラー'
->>>>>>> 21c9d9967e40a316f9b927b7de13351eff45361d
     end
   end
 
