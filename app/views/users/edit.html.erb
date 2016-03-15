@@ -26,16 +26,18 @@
       <th><%= f.label :school, '学校' %></th>
       <td><%= f.text_field :school %></td>
     </tr>
-    <tr>
-      <% if current_user.user_type == 1 %>
-       <th><%= f.label :grade, '学年'%></th>
-       <td><%= f.select :grade, @grade%></td>
-      <% elsif current_user.user_type == 4 #do nothing. %>
-      <% else %>
-       <th><%= f.label :job, '職業' %></th>
-       <td><%= f.select :job, @job%></td>
-      <% end %>
-    </tr>
+    <% if current_user.user_type == 1 %>
+     <tr>
+      <th><%= f.label :grade, '学年'%></th>
+      <td><%= f.select :grade, @grade%></td>
+     </tr>
+    <% elsif current_user.user_type == 4 #do nothing. %>
+    <% else %>
+     <tr>
+      <th><%= f.label :job, '職業' %></th>
+      <td><%= f.select :job, @job%></td>
+     </tr>
+    <% end %>
     <tr>
       <th><%= f.label :absent_span, '学校に行かなかった時期' %></th>
       <td><%= f.select :absent_span, @grade %></td>
