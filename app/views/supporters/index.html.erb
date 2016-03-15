@@ -15,7 +15,8 @@
         <% end %>
         <div class="col-md-<%= grid_val %> center-block">
           <div class="supporters-index-profile">
-            <div class="supporters-index-image">
+            <% backcolor_class = sp.user_type == 3 ? 'supporter-image-backcolor' : 'counselor-image-backcolor' %>
+            <div class="supporters-index-image <%= backcolor_class %>">
               <% if sp.avatar.present? %>
                 <%= link_to image_tag(sp.avatar(:thumb)), supporter_path(sp.id) %>
               <% else %>

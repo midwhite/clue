@@ -16,7 +16,6 @@ h1 {
         width: 200px;
         height: 130px;
         padding: 20px;
-        background: #0099FF;
         position: relative;
         border-radius: 10px 10px 0px 0px;
         margin-right: auto;
@@ -41,11 +40,17 @@ h1 {
           left: 5px;
         }
       }
+      .student-image-backcolor {
+        background-color: #0099FF;
+      }
+      .parent-image-backcolor {
+        background-color: #efea3a;
+      }
       .students-index-data {
         width: 200px;
         height: 100px;
         padding: 10px;
-        background: #FFFFFF;
+        background-color: #FFFFFF;
         border-radius: 0px 0px 10px 10px;
         margin-right: auto;
         margin-left: auto;
