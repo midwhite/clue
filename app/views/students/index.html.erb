@@ -15,7 +15,8 @@
         <% end %>
         <div class="col-md-<%= grid_val %> center-block">
           <div class="students-index-profile">
-            <div class="students-index-image">
+            <% backcolor_class = st.user_type == 1 ? 'student-image-backcolor' : 'parent-image-backcolor' %>
+            <div class="students-index-image <%= backcolor_class %>">
               <% if st.avatar.present? %>
                 <%= link_to image_tag(st.avatar(:thumb)), student_path(st.id) %>
               <% else %>
