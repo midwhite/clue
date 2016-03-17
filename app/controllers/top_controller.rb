@@ -7,7 +7,7 @@ class TopController < ApplicationController
       if current_user.user_type == 0
         redirect_to managers_index_path
       elsif current_user.user_type != 3 && current_user.user_type != 4
-        add_breadcrumb '先輩・カウンセラーを探す', :supporters_path
+        add_breadcrumb '先輩/カウンセラーを探す', :supporters_path
         @supporters = User.where(user_type: [3, 4]).page(params[:page])
         render template: 'supporters/index'
       elsif current_user.user_type == 3 || current_user.user_type == 4
