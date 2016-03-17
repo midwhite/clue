@@ -1,6 +1,15 @@
+@import "var_module.scss";
+
 h1 {
   font-size: 30px;
   padding: 5px;
+}
+
+.supporter-image-backcolor {
+  background-color: $supporter-backcolor;
+}
+.counselor-image-backcolor {
+  background-color: $counselor-backcolor;
 }
 
 .supporters-index-profiles {
@@ -39,12 +48,7 @@ h1 {
           left: 5px;
         }
       }
-      .supporter-image-backcolor {
-        background-color: #FF0;
-      }
-      .counselor-image-backcolor {
-        background-color: #21aca8;
-      }
+
       .supporters-index-data {
         width: 200px;
         height: 100px;
@@ -70,38 +74,37 @@ h1 {
     background: #FFF;
   }
 }
-.content900{
+.content900 {
   max-width:900px;
   margin:10px auto;
   
-.supporter-box{
-  background-color:#FFF;
-  padding:20px;
-  margin-bottom:10px;
-  p{
-    font-size:20px;
+  .supporter-box{
+    background-color:#FFF;
+    padding:20px;
+    margin-bottom:10px;
+    p{
+      font-size:20px;
+    }
   }
-}
    
-    .img-box{
-      background-color:#FF0;
-      width:100%;
-      img{
-        margin:0 auto;
-        margin:20px;
-      }
+  .img-box{
+    width:100%;
+    img{
+      margin:0 auto;
+      margin:20px;
     }
-    h2{
-      font-weight:bold;
-      margin-bottom:20px;
-    }
-    .supporter-kikkake{
-      li{
-        width: 200px;
-        background-color:#7fffd4;
-        disply: inline-block;
-        padding:10px;
-        margin-bottom:10px;
-         }
-    }
+  }
+  h2{
+    font-weight:bold;
+    margin-bottom:20px;
+  }
+  .supporter-kikkake{
+    li{
+      width: 200px;
+      background-color:#7fffd4;
+      disply: inline-block;
+      padding:10px;
+      margin-bottom:10px;
+       }
+  }
 }

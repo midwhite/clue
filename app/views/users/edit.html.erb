@@ -72,11 +72,11 @@
     </tr> 
     <tr>
       <div class="form-group">
-      <th><%= f.label :absence_triggers, 'キッカケ' %></th>
+      <th><%= f.label :absence_trigger, 'キッカケ' %></th>
 
     <td>
 
-　　　<%= f.fields_for :absence_triggers do |tri| %>
+　　　<%= f.fields_for :absence_trigger do |tri| %>
      
       <label>
           <%= tri.check_box :classroom, {}, true, false %> <%= tri.label :classroom, '学級崩壊' %>

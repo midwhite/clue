@@ -1,7 +1,7 @@
 class SupportersController < ApplicationController
 
   add_breadcrumb 'TOP', :root_path
-  add_breadcrumb '先輩を探す', :search_supporters_path
+  add_breadcrumb '先輩/カウンセラーを探す', :search_supporters_path
 
   def index
     @supporters = User.where(user_type: [3, 4])
@@ -17,7 +17,7 @@ class SupportersController < ApplicationController
                     .search_trigger(params[:absence_trigger])
                     .search_age(params[:min_age], params[:max_age])
                     .page(params[:page])
-    @param_keyword = "プロフィールに「#{params[:keyword]}」を含む先輩" if params[:keyword].present?
+    @param_keyword = "プロフィールに「#{params[:keyword]}」を含む先輩/カウンセラー" if params[:keyword].present?
     @param_min_age = "#{params[:min_age]}歳以上" if params[:min_age].present?
     @param_max_age = "#{params[:max_age]}歳以下" if params[:max_age].present?
     @param_area = "#{params[:area]}在住" if params[:area].present?

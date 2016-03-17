@@ -1,6 +1,15 @@
+@import "var_module.scss";
+
 h1 {
   font-size: 30px;
   padding: 5px;
+}
+
+.student-image-backcolor {
+  background-color: $student-backcolor;
+}
+.parent-image-backcolor {
+  background-color: $parent-backcolor;
 }
 
 .students-index-profiles {
@@ -39,12 +48,6 @@ h1 {
           top: 5px;
           left: 5px;
         }
-      }
-      .student-image-backcolor {
-        background-color: #0099FF;
-      }
-      .parent-image-backcolor {
-        background-color: #efea3a;
       }
       .students-index-data {
         width: 200px;
