@@ -4,9 +4,11 @@
 <section class="container">
   <div class="row">
     <div class="user-show-profile content900">
-      <h1>先輩情報</h1>
+      <% type_name = @supporter.user_type == 3 ? '先輩' : 'カウンセラー' %>
+      <h1><%= type_name %>情報</h1>
       <div class="col-md-6 col-sm-12">
-        <div class="img-box">
+        <% backcolor_class = @supporter.user_type == 3 ? 'supporter-image-backcolor' : 'counselor-image-backcolor' %>
+        <div class="img-box <%= backcolor_class %>">
          <center><% if @supporter.avatar? %>
            <%= image_tag(@supporter.avatar(:thumb)) %></center>
           <% else %>
@@ -48,45 +50,45 @@
         
       <div class="col-md-6 col-sm-12">
         <div class="supporter-box">
-        <table class="table table-bordere">
-          <h2>チケット情報</h2>
-          <% unless @ticket.present? %>
-          登録されているチケットはありません。
-          <% else %>
-          <tr>
-            <th>発行日</th>
-            <td><%= @ticket.created_at.strftime("%Y年%m月%d日 %H時%M分") %></td>
-          </tr>
-          <tr>
-            <th>チケット名</th>
-            <td><%= @ticket.title %></td>
-          </tr>
-          <tr>
-            <th>都道府県</th>
-            <td><%= @ticket.area %></td>
-          </tr>
-          <tr>
-            <th>場所</th>
-            <td><%= @ticket.place %></td>
-          </tr>
-          <tr>
-            <th>価格</th>
-            <td><%= number_to_currency(@ticket.price) %></td>
-          </tr>
-          <tr>
-            <th>時間</th>
-            <td><%= @ticket.length %>時間</td>
-          </tr>
-          <tr>
-            <th>評価</th>
-            <td style="color:#ffd700;">★<%= @reputation %></td>
-          </tr>
-          <tr>
-            <th>メッセージ</th>
-            <td><%= simple_format(h(@ticket.message)) %></td>
-          </tr>
+          <table class="table table-bordere">
+            <h2>チケット情報</h2>
+            <% unless @ticket.present? %>
+            登録されているチケットはありません。
+            <% else %>
+            <tr>
+              <th>発行日</th>
+              <td><%= @ticket.created_at.strftime("%Y年%m月%d日 %H時%M分") %></td>
+            </tr>
+            <tr>
+              <th>チケット名</th>
+              <td><%= @ticket.title %></td>
+            </tr>
+            <tr>
+              <th>都道府県</th>
+              <td><%= @ticket.area %></td>
+            </tr>
+            <tr>
+              <th>場所</th>
+              <td><%= @ticket.place %></td>
+            </tr>
+            <tr>
+              <th>価格</th>
+              <td><%= number_to_currency(@ticket.price) %></td>
+            </tr>
+            <tr>
+              <th>時間</th>
+              <td><%= @ticket.length %>時間</td>
+            </tr>
+            <tr>
+              <th>評価</th>
+              <td style="color:#ffd700;">★<%= @reputation %></td>
+            </tr>
+            <tr>
+              <th>メッセージ</th>
+              <td><%= simple_format(h(@ticket.message)) %></td>
+            </tr>
+            <% end %>
           </table>
-          <% end %>
         </div><!--supporter-box-->
       </div>
       <div class="col-md-6 col-sm-12">
