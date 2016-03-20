@@ -24,7 +24,7 @@
             </tr>
             <tr>
                 <th>手数料収入額</th>
-                <td><%= number_to_currency(@sales.sum(:price) * 0.3) %></td>
+                <td><%= number_to_currency(@sales.sum(:price) * 0.3) %></td>    
             </tr>
             <tr>
                 <th>累計出金額</th>
@@ -131,7 +131,15 @@
                 <% @payments.each do |pay| %>
                 <tr>
                     <td><%= pay.created_at.strftime("%Y年%m月%d日 %H時%M分") %></td>
-                    <td><%= link_to pay.user.username, managers_user_path(pay.user_id) %></td>
+                    <td>
+                    <% if pay.user %>
+                        <%= link_to pay.user.username, managers_user_path(pay.user_id) %>
+                    <% else %>
+                        <span class="label label-pill label-danger">
+                        削除されたユーザー（id:<%= pay.user_id %>）
+                        </span>
+                    <% end %>
+                    </td>
                     <td><%= number_to_currency(pay.amount) %></td>
                 </tr>
                 <% end %>

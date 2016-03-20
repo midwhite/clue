@@ -18,7 +18,33 @@
 //= require_tree .
 //= require fancybox
 
+
+
 $(document).ready(function() {
+  
+  $('#supporters_lightbox').click(function(){
+    $('.lightbox').fadeOut();
+    $('#search_supporters').fadeIn();
+  });
+  
+  $('#students_lightbox').click(function(){
+    $('.lightbox').fadeOut();
+    $('#search_students').fadeIn();
+  });
+  
+  $('#mypage_menu').click(function() {
+      $('.lightbox').fadeOut();
+      $('#my_page_menu').fadeIn();
+  })
+  
+  $('.lightbox, .lightbox_button').click(function() {　event.stopPropagation();　});
+  $(document).click(function() {
+    console.log("閉じるよ");
+    $('.lightbox').fadeOut();
+    
+  });
+  
+  /*
   $("a.fancybox").fancybox({
     'width': 700,
     'height': 400,
@@ -27,7 +53,8 @@ $(document).ready(function() {
     'topRatio': 0.1,
     'scrolling': 'auto',
     'autoSize': false
-    });
+  });
+  */
 });
 
 $(function(){

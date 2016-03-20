@@ -1,6 +1,5 @@
-<div style="display:none;">
-  <div id="search_supporters">
 
+  <div id="search_supporters" style="display:none;" class="lightbox">
     <h1>先輩/カウンセラーを探す</h1>
     <%= form_tag search_supporters_path, method: :get, class:"form-inline" do %>
       <%= render 'shared/search_form', absence_selector:true %>
@@ -8,7 +7,7 @@
 
   </div>
   
-  <div id="search_students">
+  <div id="search_students"  style="display:none;" class="lightbox">
 
     <h1>生徒を探す</h1>
     <%= form_tag search_students_path, method: :get, class:"form-inline" do %>
@@ -16,4 +15,4 @@
     <% end %>
 
   </div>
-</div>
+
