@@ -51,7 +51,7 @@
         <%= yield %>
         
       </div>
-
+    
       <%= render partial: "layouts/footer" %>
     </div>
     <script>
@@ -60,10 +60,12 @@
       hsize = $("footer").height();
      $("#wrap").css("padding-bottom", hsize );
      });
+     
      $(window).resize(function () {
       hsize = $("footer").height();
       $("#wrap").css("padding-bottom", hsize);
      });
+     
     </script>
    
   </body>
