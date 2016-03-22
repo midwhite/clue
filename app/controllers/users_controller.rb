@@ -14,6 +14,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(current_user.id)
+    if @user.absence_trigger.blank?
+      @user.absence_trigger = AbsenceTrigger.new
+    end
     @sex = sex_params
     @job = job_params
     @grade = grade_params
