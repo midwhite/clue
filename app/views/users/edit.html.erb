@@ -75,25 +75,23 @@
       <th><%= f.label :absence_trigger, 'キッカケ' %></th>
 
     <td>
-
 　　　<%= f.fields_for :absence_trigger do |tri| %>
-     
-      <label>
-          <%= tri.check_box :classroom, {}, true, false %> <%= tri.label :classroom, '学級崩壊' %>
-          <%= tri.check_box :harm, {},true, false %> <%= tri.label :harm, 'いじめ' %>
-          <%= tri.check_box :antipathy, {}, true, false %> <%= tri.label :antipathy, '学校への苦手意識' %>
-          <%= tri.check_box :teacher, {}, true, false %> <%= tri.label :teacher, '先生との関係' %>
-          <%= tri.check_box :friendship, {}, true, false %> <%= tri.label :friendship, '友人関係' %>
-          <%= tri.check_box :study, {}, true, false %> <%= tri.label :study, '勉強' %>
-          <br>
-          <%= tri.check_box :change_school, {}, true, false %> <%= tri.label :change_school, '転校・転勤' %>
-          <%= tri.check_box :neglect, {}, true, false %> <%= tri.label :neglect, '育児放棄' %>
-          <%= tri.check_box :dv, {}, true, false %> <%= tri.label :dv, '家庭内暴力' %>
-          <%= tri.check_box :poverty, {}, true, false %> <%= tri.label :poverty, '経済的理由' %>
-          <%= tri.check_box :parents, {}, true, false %> <%= tri.label :parents, '離婚などの親同士の関係' %>
-          <%= tri.check_box :no_reason, {}, true, false %> <%= tri.label :no_reason, 'なんとなく' %>
-        <% end %>
-      </label>
+       <label>
+         <%= tri.check_box :classroom, {}, true, false %> <%= tri.label :classroom, '学級崩壊' %>
+         <%= tri.check_box :harm, {},true, false %> <%= tri.label :harm, 'いじめ' %>
+         <%= tri.check_box :antipathy, {}, true, false %> <%= tri.label :antipathy, '学校への苦手意識' %>
+         <%= tri.check_box :teacher, {}, true, false %> <%= tri.label :teacher, '先生との関係' %>
+         <%= tri.check_box :friendship, {}, true, false %> <%= tri.label :friendship, '友人関係' %>
+         <%= tri.check_box :study, {}, true, false %> <%= tri.label :study, '勉強' %>
+         <br>
+         <%= tri.check_box :change_school, {}, true, false %> <%= tri.label :change_school, '転校・転勤' %>
+         <%= tri.check_box :neglect, {}, true, false %> <%= tri.label :neglect, '育児放棄' %>
+         <%= tri.check_box :dv, {}, true, false %> <%= tri.label :dv, '家庭内暴力' %>
+         <%= tri.check_box :poverty, {}, true, false %> <%= tri.label :poverty, '経済的理由' %>
+         <%= tri.check_box :parents, {}, true, false %> <%= tri.label :parents, '離婚などの親同士の関係' %>
+         <%= tri.check_box :no_reason, {}, true, false %> <%= tri.label :no_reason, 'なんとなく' %>
+       </label>
+     <% end %>
     </td>
     </tr>
     <tr>
