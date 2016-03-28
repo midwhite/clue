@@ -134,20 +134,25 @@
     <% if user_signed_in? %>
       <div class="user-show-edit-btn">
         <% if current_user.user_type != 3 && current_user.user_type != 4 %>
+      
           <ul>
             <li>
-              <%= link_to 'チケット購入', ( @ticket.nil? ? 'javascript:void(0);' : new_offer_path(ticket_id: @ticket.id)) %>
+            <%= link_to 'チケット購入', ( @ticket.nil? ? 'javascript:void(0);' : new_offer_path(ticket_id: @ticket.id)) %>
             </li>
-            <li><%= link_to 'ブロック' %></li>
-            <li><%= link_to '通報', report_users_path(user_id: params[:id]), method: :post %></li>
+            <li>
+           <%= link_to '通報', report_users_path(user_id: params[:id]), method: :post %></li>
           </ul>
         <% end %>
         <ul>
-          <li><%= link_to 'メッセージを送る', new_message_path(receiver_id: @supporter.id) %></li>
-          <li><%= link_to 'メッセージボックス', messages_path %></li>
-          <li><%= link_to 'ダイアリーを読む', search_diaries_path(user_id: params[:id]), method: :post %></li>
+          <li>
+          <%= link_to 'メッセージを送る', new_message_path(receiver_id: @supporter.id) %></li>
+          <li>
+           <%= link_to 'メッセージボックス', messages_path %></li>
+          <li>
+           <%= link_to 'ダイアリーを読む', search_diaries_path(user_id: params[:id]), method: :post %></li>
         </ul>
       </div>
+     
     <% end %>
   </div>
   <div class="clear"></div>

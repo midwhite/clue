@@ -2,18 +2,19 @@
 
   <h1>収支管理</h1>
 
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#total-information">集計情報</a></li>
-    <li><a data-toggle="tab" href="#ticket-sales-information">チケット販売情報</a></li>
-    <li><a data-toggle="tab" href="#ticket-sales-history">チケット販売履歴</a></li>
-    <li><a data-toggle="tab" href="#payment-information">出金情報</a></li>
-    <li><a data-toggle="tab" href="#withdrawal-history">出金履歴</a></li>
+  <ul class="nav nav-tabs"role="tablist">
+    <li role="presentation" class="active"><a data-toggle="tab" href="#total-information">集計情報</a></li>
+    <li role="presentation"><a data-toggle="tab" href="#ticket-sales-information">チケット販売情報</a></li>
+    <li role="presentation"><a data-toggle="tab" href="#ticket-sales-history">チケット販売履歴</a></li>
+    <li role="presentation"><a data-toggle="tab" href="#payment-information">出金情報</a></li>
+    <li role="presentation"><a data-toggle="tab" href="#withdrawal-history">出金履歴</a></li>
   </ul>
   
   <div class="tab-content">
     <div id="total-information" class="tab-pane fade in active">
         <!--<h2>集計情報</h2>-->
-        <table>
+        <div class="table-responsive">
+        <table class="table table-bordered">
             <tr>
                 <th>仮払額残高</th>
                 <td><%= number_to_currency(@sales.sum(:price) - @offers.sum(:price)) %></td>
@@ -40,10 +41,11 @@
             </tr>
         </table>
     </div><!-- //end of #total-information -->
+    </div>
     
     <div id="ticket-sales-information" class="tab-pane fade">
         <!--<h2>チケット販売情報</h2>-->
-        <table>
+        <table class="table table-bordered">
             <tr>
                 <th>累計販売枚数</th>
                 <td><%= @sales.count %>枚</td>
@@ -65,7 +67,7 @@
     
     <div id="ticket-sales-history" class="tab-pane fade">
         <!--<h2>チケット販売履歴</h2>-->
-        <table>
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>確定日</th>
@@ -101,7 +103,7 @@
     
     <div id="payment-information" class="tab-pane fade">
         <!--<h2>出金情報</h2>-->
-        <table>
+        <table class="table table-bordered">
             <tr>
                 <th>累計出金回数</th>
                 <td><%= @payments.count %>回</td>
@@ -119,7 +121,7 @@
 
     <div id="withdrawal-history" class="tab-pane fade">
         <!--<h2>出金履歴</h2>-->
-        <table>
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>出金申請日</th>
@@ -146,6 +148,5 @@
             </tbody>
         </table>
     </div><!-- //end of #withdrawal-history -->
-
   </div><!-- //end of .tab-content -->
 </div><!-- //end of .manager-account -->
