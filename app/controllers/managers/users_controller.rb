@@ -15,6 +15,10 @@ class Managers::UsersController < ApplicationController
     @types = [@students, @parents, @supporters, @counselors]
     @caption = ['生徒情報', '保護者情報', '先輩情報', 'カウンセラー情報']
     @q = User.search
+    
+    @wait_to_identificatted_users = @users
+      .where(user_type: [3, 4])
+      .where(identification_status: 1)
   end
 
   def search
@@ -59,6 +63,6 @@ class Managers::UsersController < ApplicationController
   end
 
   def submit_params
-    params.require(:user).permit(:email, :username, :avatar, :sex, :birth, :job, :grade, :post_number, :area, :address, :tel, :line_id, :profile, :search_permit, :permit_info_mail, :absent_span, :block, :reported, :family_name, :first_name, :family_name_kana, :first_name_kana).merge(name: "#{params[:user][:family_name]} #{params[:user][:first_name]}", name_kana: "#{params[:user][:family_name_kana]} #{params[:user][:first_name_kana]}")
+    params.require(:user).permit(:email, :username, :avatar, :sex, :birth, :job, :grade, :post_number, :area, :address, :tel, :line_id, :profile, :search_permit, :permit_info_mail, :absent_span, :block, :reported, :family_name, :first_name, :family_name_kana, :first_name_kana, :identification_status).merge(name: "#{params[:user][:family_name]} #{params[:user][:first_name]}", name_kana: "#{params[:user][:family_name_kana]} #{params[:user][:first_name_kana]}")
   end
 end

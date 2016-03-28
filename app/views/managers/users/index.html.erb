@@ -5,6 +5,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#enrollment-summary">登録者数集計</a></li>
         <li><a data-toggle="tab" href="#registrant-information">登録者情報</a></li>
+        <li><a data-toggle="tab" href="#wait-identificated">身分証確認待ち</a></li>
     </ul>
   
     <div class="tab-content">
@@ -71,6 +72,15 @@
             <%= render partial:'search_form' %>
             
             <div id="search-result"></div>
+
+        </div><!-- //end of #registrant-information -->
+
+        <div id="wait-identificated" class="tab-pane fade">
+            <!--<h2>身分証確認待ち</h2>-->
+            <% @user_list = @wait_to_identificatted_users %>
+            <%= render partial:'search_result' %>
+            
+            <div></div>
 
         </div><!-- //end of #registrant-information -->
         

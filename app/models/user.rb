@@ -17,25 +17,44 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :absence_trigger
 
+  
+  AVATAR_IMAGE_STYLES = { medium: "300x300#", thumb: "100x100#" }
+  IDENTIFICATION_IMAGE_STYLES = { thumb: "100x100#" }
+  IMAGE_CONTENT_TYPES = ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   unless Rails.env.production?
     has_attached_file :avatar,
-      styles: { medium: "300x300#", thumb: "100x100#" }
+      styles: AVATAR_IMAGE_STYLES
+
+    has_attached_file :identification_image,
+      styles: IDENTIFICATION_IMAGE_STYLES
+
   else 
-    has_attached_file :avatar,
-      styles: { medium: "300x300#", thumb: "100x100#" },
-      path: ":attachment/:id/:style.:extension",
-      storage: :s3,
-      s3_credentials: {
+    s3_s3_credential_params = {
         :s3_host_name       => 's3-ap-northeast-1.amazonaws.com',
         :bucket             => ENV['S3_BUCKET'],
         :access_key_id      => ENV['AWS_KEY'],
         :secret_access_key  => ENV['AWS_SECRET']
       }
+    has_attached_file :avatar,
+      styles: AVATAR_IMAGE_STYLES,
+      path: ":attachment/:id/avatar/:style.:extension",
+      storage: :s3,
+      s3_credentials: s3_s3_credential_params
+
+    has_attached_file :identification_image,
+      styles: IDENTIFICATION_IMAGE_STYLES,
+      path: ":attachment/:id/identification/:style.:extension",
+      storage: :s3,
+      s3_credentials: s3_s3_credential_params
   end
 
   validates_attachment :avatar,
     content_type: {
-      content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+      content_type: IMAGE_CONTENT_TYPES
+    }
+  validates_attachment :identification_image,
+    content_type: {
+      content_type: IMAGE_CONTENT_TYPES
     }
 
   def age
@@ -43,6 +62,18 @@ class User < ActiveRecord::Base
       d1 = self.birth.strftime("%Y%m%d").to_i
       d2 = Date.today.strftime("%Y%m%d").to_i
       return (d2 - d1) / 10000
+    end
+  end
+  
+  def identification_status_str
+    if self.identification_status == 1
+     '確認待ち'
+    elsif self.identification_status == 2
+     '確認済み'
+    elsif self.identification_status == 3
+     '確認失敗'
+    else
+     '未確認'
     end
   end
 
