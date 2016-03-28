@@ -79,6 +79,10 @@
         <th>お知らせメール</th>
         <td><%= f.select :permit_info_mail, [['Clueの情報をメールで受け取る', 1], ['お知らせメールを受けとらない', 0]] %></td>
     </tr>
+    <tr>
+        <th>身分証確認状況</th>
+        <td><%= f.select :identification_status, [['未確認', 0], ['確認待ち', 1], ['確認済み', 2], ['確認失敗', 3]] %></td>
+    </tr>
 </table>
 
 <div class="row">

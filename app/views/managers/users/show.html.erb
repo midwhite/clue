@@ -85,6 +85,19 @@
         <th>通報回数</th>
         <td><%= @user.reported %>回</td>
     </tr>
+<% if @user.user_type == 3 || @user.user_type == 4 %>
+    <tr>
+        <th>身分証確認状況</th>
+        <td><%= @user.identification_status_str %></td>
+    </tr>
+    <% if @user.identification_image.present? %>
+        <tr>
+            <th>身分証画像</th>
+            <td><%= image_tag(@user.identification_image(:thumb)) %>
+            </td>
+        </tr>
+    <% end %>
+<% end %>
 <% if @accounts.present? %>
     <% @accounts.each.with_index(1) do |ac, i| %>
     <tr>

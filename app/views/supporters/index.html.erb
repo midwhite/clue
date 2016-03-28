@@ -25,7 +25,12 @@
               <p class="area"><%= sp.area %></p>
             </div>
             <div class="supporters-index-data">
-              <p><%= link_to sp.username, supporter_path(sp.id) %></p>
+              <% username = sp.username
+                if sp.identification_status == 2
+                  username += '★'
+                end
+              %>
+              <p><%= link_to username, supporter_path(sp.id) %></p>
               <% job = sp.user_type == 3 ? sp.job : 'カウンセラー' %>
               <p><%= job %></p>
               <p><%= link_to sp.ticket.title, supporter_path(sp.id) if sp.ticket.present? %></p>
