@@ -34,6 +34,15 @@
             <th>年齢</th>
             <td><%= @supporter.age %>歳</td>
             </tr>
+            <th>身分証確認状況</th>
+            <td>
+              <% if @supporter.identification_status == 2 %>
+                確認済み
+              <% else%>
+                未確認
+              <% end%>
+            </td>
+            </tr>
           </table>
           <h3>きっかけ</h3>
           <ul class="supporter-kikkake">

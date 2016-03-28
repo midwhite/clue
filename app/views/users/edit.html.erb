@@ -98,12 +98,20 @@
       <th><%= f.label :profile, 'プロフィール' %></th>
       <td><%= f.text_area :profile %></td>
     </tr>
-   <tr>
   <% if current_user.user_type != 3 && current_user.user_type != 4 %>
-  <th><%= f.label :search_permit, '検索表示許可', class: "label_class" %></th>
-  <td><%= f.select :search_permit, [['許可する', 1],['許可しない', 0]] %></td>
-     </tr>
-
+   <tr>
+    <th><%= f.label :search_permit, '検索表示許可', class: "label_class" %></th>
+    <td><%= f.select :search_permit, [['許可する', 1],['許可しない', 0]] %></td>
+   </tr>
+  <% end %>
+  <% if @user.user_type == 3 || @user.user_type == 4 %>
+    <tr>
+     <th><%= f.label :identification_image, '身分証登録' %></th>
+     <td>
+       現在の状況:<%= @user.identification_status_str %>
+       <br/>
+       <%= f.file_field :identification_image %></td>
+    </tr>
   <% end %>
    </table>
   <%= f.submit('編集') %>
