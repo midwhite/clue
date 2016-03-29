@@ -12,7 +12,7 @@
       
         <div id="enrollment-summary" class="tab-pane fade in active">
             <!--<h2>登録者数集計</h2>-->
-            <table>
+            <table class="table table-bordered">
                 <tr>
                     <th></th>
                     <th>登録者数</th>
@@ -79,7 +79,7 @@
             <!--<h2>身分証確認待ち</h2>-->
             <% @user_list = @wait_to_identificatted_users %>
             <%= render partial:'search_result' %>
-            
+ 
             <div></div>
 
         </div><!-- //end of #registrant-information -->
