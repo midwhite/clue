@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :absence_trigger
 
+<<<<<<< HEAD
   
   AVATAR_IMAGE_STYLES = { medium: "300x300#", thumb: "100x100#" }
   IDENTIFICATION_IMAGE_STYLES = { thumb: "100x100#" }
@@ -30,11 +31,23 @@ class User < ActiveRecord::Base
 
   else 
     s3_s3_credential_params = {
+=======
+  unless Rails.env.production?
+    has_attached_file :avatar,
+      styles: { medium: "300x300#", thumb: "100x100#" }
+  else 
+    has_attached_file :avatar,
+      styles: { medium: "300x300#", thumb: "100x100#" },
+      path: ":attachment/:id/:style.:extension",
+      storage: :s3,
+      s3_credentials: {
+>>>>>>> sako2
         :s3_host_name       => 's3-ap-northeast-1.amazonaws.com',
         :bucket             => ENV['S3_BUCKET'],
         :access_key_id      => ENV['AWS_KEY'],
         :secret_access_key  => ENV['AWS_SECRET']
       }
+<<<<<<< HEAD
     has_attached_file :avatar,
       styles: AVATAR_IMAGE_STYLES,
       path: ":attachment/:id/avatar/:style.:extension",
@@ -46,6 +59,8 @@ class User < ActiveRecord::Base
       path: ":attachment/:id/identification/:style.:extension",
       storage: :s3,
       s3_credentials: s3_s3_credential_params
+=======
+>>>>>>> sako2
   end
 
   validates_attachment :avatar,
