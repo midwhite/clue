@@ -32,9 +32,16 @@
             </div>
             <div class="supporters-index-data">
               <% username = sp.username
+<<<<<<< HEAD
               
             %>
 
+=======
+                if sp.identification_status == 2
+                  username += '★'
+                end
+              %>
+>>>>>>> 901e471228df33265b8d5ff83cddc8f33325d8fa
               <p><%= link_to username, supporter_path(sp.id) %></p>
               <% job = sp.user_type == 3 ? sp.job : 'カウンセラー' %>
               <p><%= job %></p>
