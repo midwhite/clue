@@ -63,6 +63,7 @@ padding: 0;
 
 .lightbox {
     margin: 0% 25% 50% 25%;
+    max-width: 800px;
     position: fixed;
     top: 0px;
     left: 0px;
@@ -76,6 +77,14 @@ padding: 0;
 #mail_num{
   color: white;
   background-color: red;
+  position: relative;
+  font-size: 50%;
+  top: -4px;
+  right: 100px;
   padding: 2px;
- 
+  border-radius: 100%;
+}
+
+.message_botton{
+  position: absolute;
 }

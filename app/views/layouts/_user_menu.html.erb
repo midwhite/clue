@@ -46,9 +46,11 @@
                     </li>
                     <li>
                       <%= link_to messages_path, data: {toggle: "tooltip", placement: "bottom" }, title: "メッセージ", :method => :get do %>
-                        <i class="fa fa-comments-o"></i> メッセージ
+                          <span class="message_button">
+                            <i class="fa fa-comments-o"></i> メッセージ
+                          </span>
                         <% if true #ここに，新着メールがきてたらって処理をかく%>
-                          <span id="mail_num"><%= 2 %></span>
+                          <span id="mail_num"><%= 3 %></span>
                         <% end %>
                       <% end %>
                     <li>
