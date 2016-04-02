@@ -31,8 +31,6 @@ gem 'jquery-turbolinks'
 gem 'dotenv-rails'
 gem 'spike_pay'
 
-gem 'fancybox2-rails', '0.2.8'
-
 gem 'bootstrap-sass'
 gem 'font-awesome-rails', '~> 4.2'
 

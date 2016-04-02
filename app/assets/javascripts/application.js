@@ -16,8 +16,6 @@
 //= require jquery.turbolinks
 //= require turbolinks
 //= require_tree .
-//= require fancybox
-
 
 
 $(document).ready(function() {
@@ -43,18 +41,6 @@ $(document).ready(function() {
     $('.lightbox').fadeOut();
     
   });
-  
-  /*
-  $("a.fancybox").fancybox({
-    'width': 700,
-    'height': 400,
-    'margin': 20,
-    'padding': 10,
-    'topRatio': 0.1,
-    'scrolling': 'auto',
-    'autoSize': false
-  });
-  */
 });
 
 $(function(){
