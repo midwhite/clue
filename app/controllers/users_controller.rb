@@ -193,6 +193,19 @@ class UsersController < ApplicationController
       render action: :account and return
     end
   end
+  
+  def save_account
+    @account = Account.find_or_create_by(user_id: current_user.id)
+    @store = BankDatum.find(params[:q])
+    @account.bank_id = @store.bank_id
+    @account.bank_name = @store.bank_name
+    @account.store_id = @store.store_id
+    @account.store_name = @store.store_name
+    @account.account_id = params[:account_id]
+    @account.user_name = params[:user_name]
+    @account.save!
+    redirect_to user_path(current_user.id)
+  end
 
   def report
     @reported_account = ReportedAccount.new
@@ -216,6 +229,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def submit_params
     params.require(:user).permit(:username, :avatar, :job, :grade, :post_number, :area, :address, :tel, :line_id, :profile, :search_permit, :permit_info_mail, :absent_span, :block, :reported, :family_name, :first_name, :family_name_kana, :first_name_kana, :identification_image, absence_triggers_attributes: [:classroom, :harm, :antipathy, :teacher, :friendship, :study, :change_school, :neglect, :dv, :poverty, :parents, :no_reason]).merge(name: "#{params[:user][:family_name]} #{params[:user][:first_name]}", name_kana: "#{params[:user][:family_name_kana]} #{params[:user][:first_name_kana]}")
   end
