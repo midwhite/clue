@@ -95,6 +95,14 @@
      <th>プロフィール</th>
      <td><p><%= simple_format(current_user.profile) %></p></td>
     </tr>
+ <% if @user.user_type == 3 || @user.user_type == 4 %>
+    <tr>
+     <th>身分証確認状況</th>
+     <td>
+      <%= @user.identification_status_str %>
+     </td>
+    </tr>
+ <% end %>
  </table>
 </div><!-- end of table-responsive -->
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160114215714) do
+ActiveRecord::Schema.define(version: 20160328134828) do
 
   create_table "absence_triggers", force: :cascade do |t|
     t.boolean  "classroom"
@@ -107,6 +107,19 @@ ActiveRecord::Schema.define(version: 20160114215714) do
     t.integer  "offer_id",    limit: 4
   end
 
+  create_table "new_infos", force: :cascade do |t|
+    t.string   "title",              limit: 255
+    t.text     "content",            limit: 65535
+    t.datetime "held_at"
+    t.string   "price",              limit: 255
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
+  end
+
   create_table "offers", force: :cascade do |t|
     t.integer  "ticket_id",  limit: 4
     t.integer  "user_id",    limit: 4
@@ -159,6 +172,25 @@ ActiveRecord::Schema.define(version: 20160114215714) do
     t.integer  "reputation", limit: 4
   end
 
+  create_table "social_profiles", force: :cascade do |t|
+    t.integer  "user_id",       limit: 4
+    t.string   "provider",      limit: 255
+    t.string   "uid",           limit: 255
+    t.string   "access_token",  limit: 255
+    t.string   "access_secret", limit: 255
+    t.string   "name",          limit: 255
+    t.string   "nickname",      limit: 255
+    t.string   "email",         limit: 255
+    t.string   "url",           limit: 255
+    t.string   "image_url",     limit: 255
+    t.string   "description",   limit: 255
+    t.text     "other",         limit: 65535
+    t.text     "credentials",   limit: 65535
+    t.text     "raw_info",      limit: 65535
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "tickets", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
     t.string   "title",      limit: 255
@@ -173,52 +205,57 @@ ActiveRecord::Schema.define(version: 20160114215714) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255,   default: "", null: false
-    t.string   "encrypted_password",     limit: 255,   default: "", null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "email",                             limit: 255,   default: "", null: false
+    t.string   "encrypted_password",                limit: 255,   default: "", null: false
+    t.string   "reset_password_token",              limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,     default: 0,  null: false
+    t.integer  "sign_in_count",                     limit: 4,     default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
-    t.string   "confirmation_token",     limit: 255
+    t.string   "current_sign_in_ip",                limit: 255
+    t.string   "last_sign_in_ip",                   limit: 255
+    t.string   "confirmation_token",                limit: 255
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email",      limit: 255
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
-    t.string   "name",                   limit: 255
-    t.string   "name_kana",              limit: 255
-    t.string   "family_name",            limit: 255
-    t.string   "first_name",             limit: 255
-    t.string   "family_name_kana",       limit: 255
-    t.string   "first_name_kana",        limit: 255
-    t.integer  "user_type",              limit: 4
-    t.string   "area",                   limit: 255
-    t.string   "sex",                    limit: 255
+    t.string   "unconfirmed_email",                 limit: 255
+    t.datetime "created_at",                                                   null: false
+    t.datetime "updated_at",                                                   null: false
+    t.string   "name",                              limit: 255
+    t.string   "name_kana",                         limit: 255
+    t.string   "family_name",                       limit: 255
+    t.string   "first_name",                        limit: 255
+    t.string   "family_name_kana",                  limit: 255
+    t.string   "first_name_kana",                   limit: 255
+    t.integer  "user_type",                         limit: 4
+    t.string   "area",                              limit: 255
+    t.string   "sex",                               limit: 255
     t.date     "birth"
-    t.text     "profile",                limit: 65535
-    t.string   "provider",               limit: 255
-    t.string   "uid",                    limit: 255
-    t.string   "address",                limit: 255
-    t.string   "tel",                    limit: 255
-    t.string   "job",                    limit: 255
-    t.string   "line_id",                limit: 255
-    t.string   "avatar_file_name",       limit: 255
-    t.string   "avatar_content_type",    limit: 255
-    t.integer  "avatar_file_size",       limit: 4
+    t.text     "profile",                           limit: 65535
+    t.string   "provider",                          limit: 255
+    t.string   "uid",                               limit: 255
+    t.string   "address",                           limit: 255
+    t.string   "tel",                               limit: 255
+    t.string   "job",                               limit: 255
+    t.string   "line_id",                           limit: 255
+    t.string   "avatar_file_name",                  limit: 255
+    t.string   "avatar_content_type",               limit: 255
+    t.integer  "avatar_file_size",                  limit: 4
     t.datetime "avatar_updated_at"
-    t.integer  "search_permit",          limit: 4
-    t.string   "username",               limit: 255
-    t.string   "post_number",            limit: 255
-    t.integer  "permit_info_mail",       limit: 4
-    t.string   "absent_span",            limit: 255
-    t.text     "school",                 limit: 65535
-    t.text     "grade",                  limit: 65535
-    t.integer  "block",                  limit: 4
-    t.integer  "reported",               limit: 4
+    t.integer  "search_permit",                     limit: 4
+    t.string   "username",                          limit: 255
+    t.string   "post_number",                       limit: 255
+    t.integer  "permit_info_mail",                  limit: 4
+    t.string   "absent_span",                       limit: 255
+    t.text     "school",                            limit: 65535
+    t.text     "grade",                             limit: 65535
+    t.integer  "block",                             limit: 4
+    t.integer  "reported",                          limit: 4
+    t.string   "identification_image_file_name",    limit: 255
+    t.string   "identification_image_content_type", limit: 255
+    t.integer  "identification_image_file_size",    limit: 4
+    t.datetime "identification_image_updated_at"
+    t.integer  "identification_status",             limit: 4,     default: 0,  null: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

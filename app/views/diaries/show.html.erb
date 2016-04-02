@@ -1,12 +1,13 @@
 <div class="diary-show">
-    <h1><%= @diary.title %></h1>
+    <div class="diary-me">
+    <h2><%= @diary.title %></h2>
     <p><%= @diary.post_date %> <%= @diary.category %></p>
     <p><%= @author.username %></p>
     <p><%= simple_format(h(@diary.content)) %></p>
     <div class="clear"></div>
-
+    </div>
     <div class="diary-show-comments">
-        <h3>Comments (<%= @comments.count %>件)</h3>
+        <p class="comment">コメント (<%= @comments.count %>件)</p>
         <% @comments.each do |com| %>
         <hr />
         <div class="diary-show-comment-image">

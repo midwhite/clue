@@ -59,6 +59,7 @@
     padding: 0px 10px;
     margin-left: 100px;
     position: relative;
+    background-color:#FFF;
      
 }
     .delete-btn {
@@ -75,4 +76,12 @@
 .diary-new {
     width: 600px;
     margin: 20px auto;
+}
+
+.comment{
+    font-color:#66CDAA
+}
+
+.diary-me{
+    background-color:#FFF;
 }

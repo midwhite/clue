@@ -2,20 +2,20 @@
                 <ul class="nav navbar-nav navbar-right">
                   <% if !user_signed_in? || ( current_user.user_type != 3 && current_user.user_type != 4) %>
                     <li>
-                      <%= link_to "#search_supporters", class: "fancybox" do %>
+                      <%= link_to "#search_supporters", :id => "supporters_lightbox", class: "lightbox_button" do %>
                         先輩/カウンセラーを探す
                         <span class="caret"></span>
                       <% end %>
                     </li>
                     <li>
                       <%= form_tag search_supporters_path, class: "navbar-form", method: :get do %>
-                        <input type="text" name="keyword" placeholder="先輩/カウンセラーを検索" class="form-control">
+                        <input type="text" name="keyword" placeholder="先輩/カウンセラーを検索", class="form-control">
                         <button type="submit" class="btn btn-default">検索</button>
                       <% end %>
                     </li>
                   <% elsif current_user.user_type == 3 || current_user.user_type == 4 %>
                     <li>
-                      <%= link_to "#search_students", class: "fancybox" do %>
+                      <%= link_to "#search_students", :id => "students_lightbox", class: "lightbox_button" do %>
                         生徒を探す
                         <span class="caret"></span>
                       <% end %>
@@ -47,9 +47,12 @@
                     <li>
                       <%= link_to messages_path, data: {toggle: "tooltip", placement: "bottom" }, title: "メッセージ", :method => :get do %>
                         <i class="fa fa-comments-o"></i> メッセージ
+                        <% if true #ここに，新着メールがきてたらって処理をかく%>
+                          <span id="mail_num"><%= 2 %></span>
+                        <% end %>
                       <% end %>
                     <li>
-                      <%= link_to "#my_page_menu", class: "fancybox" do %>
+                      <%= link_to "#my_page_menu", :id => "mypage_menu", class: "lightbox_button" do %>
                         マイページ
                         <span class="caret"></span>
                       <% end %>

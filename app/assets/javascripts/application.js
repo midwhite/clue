@@ -16,18 +16,31 @@
 //= require jquery.turbolinks
 //= require turbolinks
 //= require_tree .
-//= require fancybox
+
 
 $(document).ready(function() {
-  $("a.fancybox").fancybox({
-    'width': 700,
-    'height': 400,
-    'margin': 20,
-    'padding': 10,
-    'topRatio': 0.1,
-    'scrolling': 'auto',
-    'autoSize': false
-    });
+  
+  $('#supporters_lightbox').click(function(){
+    $('.lightbox').fadeOut();
+    $('#search_supporters').fadeIn();
+  });
+  
+  $('#students_lightbox').click(function(){
+    $('.lightbox').fadeOut();
+    $('#search_students').fadeIn();
+  });
+  
+  $('#mypage_menu').click(function() {
+      $('.lightbox').fadeOut();
+      $('#my_page_menu').fadeIn();
+  })
+  
+  $('.lightbox, .lightbox_button').click(function() {　event.stopPropagation();　});
+  $(document).click(function() {
+    console.log("閉じるよ");
+    $('.lightbox').fadeOut();
+    
+  });
 });
 
 $(function(){

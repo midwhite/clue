@@ -220,6 +220,7 @@
 .user-show-edit-btn {
     width: 600px;
     margin: 20px auto;
+    
     ul {
         width: 600px;
         margin: 0px auto;
@@ -241,7 +242,7 @@
             color: #000;
         }
         a:hover {
-            background: #87CEFA;
+            background: #AFEEEE;
             color: #FFF;
         }
         margin-bottom: 20px;
@@ -250,7 +251,6 @@
         margin-right: 15px;
     }
 }
-
 /*confirm_register 登録情報の確認*/
 .content600{
     max-width:600px;
@@ -354,4 +354,7 @@ table{
      text-align: left;
 }
 
-
+.test{
+   
+    color:red;
+}

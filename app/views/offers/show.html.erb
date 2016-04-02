@@ -22,6 +22,8 @@
     <tr>    
         <th>支払額</th>
         <td><%= number_to_currency(@offer.price) %></td>
+    </tr>
+    <tr>
         <th>メッセージ</th>
         <td><%= simple_format(h(@offer.message)) %></td>
     </tr>
