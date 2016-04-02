@@ -146,7 +146,8 @@
       
           <ul>
             <li>
-            <%= link_to 'チケット購入', ( @ticket.nil? ? 'javascript:void(0);' : new_offer_path(ticket_id: @ticket.id)) %>
+            <%#= link_to 'チケット購入', ( @ticket.nil? ? 'javascript:void(0);' : new_offer_path(ticket_id: @ticket.id)) %>
+            <%= link_to 'チケット購入', 'https://spike.cc/shop/user_3410976059/products/RTYY377Y' %>
             </li>
             <li>
            <%= link_to '通報', report_users_path(user_id: params[:id]), method: :post %></li>
