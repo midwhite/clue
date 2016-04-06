@@ -7,14 +7,18 @@ class Managers::ReportsController < ApplicationController
 
   def index
     @reports = ReportedAccount
-    # @users = User.where('reported >= ?', 1).order(reported: :desc).page(params[:page]).per(20)
-    @q = User.where('reported >= ?', 1).search
+    @q = User.where('reported >= ?', 1)
+      .order(reported: :desc)
+      .search
+    @users = @q.result
   end
 
   def search
     @reports = ReportedAccount
-    @q = User.where('reported >= ?', 1).search(search_params)
-    @messages = @q.result
+    @q = User.where('reported >= ?', 1)
+      .order(reported: :desc)
+      .search(search_params)
+    @users = @q.result
     render "shared/search"
   end
 
