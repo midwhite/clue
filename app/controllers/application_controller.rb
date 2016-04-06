@@ -167,7 +167,7 @@ class ApplicationController < ActionController::Base
   end
 
   def full_profile
-    unless current_user.user_type?
+    unless current_user.user_type.present?
       redirect_to register_users_path(current_user.id)
     end
   end

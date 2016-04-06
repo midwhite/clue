@@ -4,7 +4,7 @@
        <%#= page_entries_info @users, :entry_name => 'ユーザー' %>
     </div>
 
-    <table>
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>画像</th>
@@ -29,7 +29,7 @@
                 <td><%= user.sex %></td>
                 <td><%= user.area %></td>
                 <td><%= user.reported %>回</td>
-                <td>通報理由</td>
+                <td><%= link_to '通報メッセージを見る', reports_managers_user_path(user.id) %></td>
             </tr>
         <% end %>
         </tbody>
