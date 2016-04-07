@@ -4,17 +4,17 @@
     margin: 0px auto;
     padding-bottom: 20px;
     h2 {
-        width: 480px;
         font-size: 20px;
         padding: 10px;
-        border-left: 4px solid #3e3e3e;
-        border-bottom: 1px solid #3e3e3e;
-        margin: 10px;
+        border-left: 6px solid #FFF;
+        border-bottom: 2px solid #FFF;
+        margin: 30px;
     }
     h3 {
         font-size: 18px;
         font-weight: bold;
     }
+   
     ul.offer-index-tab {
         margin: 20px 0px;
         li {
@@ -30,14 +30,15 @@
     }
     div.offer-index-tab {
         width: 600px;
-        height: 100px;
+        
         margin: 0px auto;
         img {
-            width: 95px;
-            height: 95px;
+            width: 100px;
+            height: 100px;
             float: left;
             border-radius: 50%;
             background: #FFF;
+            margin-top:30px;
         }
         span.offer-index-infobox {
             width: 480px;
@@ -63,4 +64,8 @@
         border-radius: 50%;
         border: 0px;
     }
+}
+
+.offer1{
+    padding:20px;
 }

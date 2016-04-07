@@ -139,28 +139,29 @@
         <% end %>
       </div>
     </div>
- 
+ <div class="center-block">
     <% if user_signed_in? %>
       <div class="user-show-edit-btn">
         <% if current_user.user_type != 3 && current_user.user_type != 4 %>
-      
-          <ul>
-            <li>
-            <%= link_to 'チケット購入', ( @ticket.nil? ? 'javascript:void(0);' : new_offer_path(ticket_id: @ticket.id)) %>
-            </li>
-            <li>
-           <%= link_to '通報', report_users_path(user_id: params[:id]), method: :post %></li>
-          </ul>
+  　<div class="btn-toolbar">
+    　<div class="btn-group">
+     <button type="button" class="btn btn-default btn-lg"><%= link_to 'チケット購入', ( @ticket.nil? ? 'javascript:void(0);' : new_offer_path(ticket_id: @ticket.id)) %></button>
+           
+      <button type="button" class="btn btn-default btn-lg"><%= link_to '通報', report_users_path(user_id: params[:id]), method: :post %></button>
+
         <% end %>
-        <ul>
-          <li>
-          <%= link_to 'メッセージを送る', new_message_path(receiver_id: @supporter.id) %></li>
-          <li>
-           <%= link_to 'メッセージボックス', messages_path %></li>
-          <li>
-           <%= link_to 'ダイアリーを読む', search_diaries_path(user_id: params[:id]), method: :post %></li>
-        </ul>
-      </div>
+       
+          <button type="button" class="btn btn-default btn-lg"><%= link_to 'メッセージを送る', new_message_path(receiver_id: @supporter.id) %></button>
+         
+           <button type="button" class="btn btn-default btn-lg"><%= link_to 'メッセージボックス', messages_path %></button>
+       
+           <button type="button" class="btn btn-default btn-lg"><%= link_to 'ダイアリーを読む', search_diaries_path(user_id: params[:id]), method: :post %></button>
+      
+      
+       </div>
+       </div>
+       </div>
+       </div>
      
     <% end %>
   </div>
