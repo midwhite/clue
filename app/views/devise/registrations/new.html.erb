@@ -1,10 +1,8 @@
 <div id="wrap">
-<div class="touroku" style="background-color:#f5f6d9; width:800px;">
-<div class="container content600">
+<div class="touroku" style="background-color:#f5f6d9; ">
 <div class="low">
    <div class="col-ms-6 col-ms-offset-3">
 <center><h2 style="font-size:1.5em;">新規会員登録</h2></br></center>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
@@ -31,15 +29,18 @@
     <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
   </div><br />
 </div>
+<form class="form-horizontal">
+	<div class="form-group">
+		<div class="col-sm-offset-4 col-sm-8">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" value="checkboxA"> <%= link_to 'Clue利用規約', '/terms' %>
+				</label>
+			</div>
+		</div>
+	</div>
+</form>
 
-<select multiple class="form-control" style="padding: 30px;">
-  <option>利用規約</option>
-  <option>本利用規約（以下「本規約」といいます。）には、株式会社Marianne（以下「当社」といいます。）の提供するサービスのご利用にあたり、 登録メンバーの皆様に遵守していただかなければならない事項及び当社と登録メンバーの皆様との間の権利義務関係が定められております。
-当該サービスを登録メンバーとしてご利用になる方は、本規約に同意する前に、必ず全文お読み下さいますようお願い致します。</option>
-  <option>3</option>
-  <option>4</option>
-  <option>5</option>
-</select></br>
 
   <div class="form-group">
     <div class="col-sm-offset-4 col-sm-8  btn-mar-left">
@@ -52,7 +53,6 @@
 <% end %>
 
 <%#= render "devise/shared/links" %>
-</div>
 </div>
 </div>
 </div>
