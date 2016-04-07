@@ -48,3 +48,7 @@ $(function(){
     $('.alert-info').fadeOut(500);
   }, 3000);
 });
+
+$(function(){
+  $('.evaluate').text("☆");
+});
