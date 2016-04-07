@@ -35,6 +35,7 @@ class SupportersController < ApplicationController
       @reviews = Review.where(ticket_id: @ticket.id).order(created_at: :desc).includes(:user)
     end
     @reputation = reputation_params
+    @stars = "★" * @reputation
     @trigger = @supporter.absence_trigger
     @triggers = true_triggers(@trigger) if @trigger.present?
     if user_signed_in?

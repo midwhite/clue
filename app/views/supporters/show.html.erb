@@ -81,7 +81,7 @@
             </tr>
             <tr>
               <th>評価</th>
-              <td style="color:#ffd700;">★<%= @reputation %></td>
+              <td style="color:#ffd700;"><%= @stars %></td>
             </tr>
             <tr>
               <th>メッセージ</th>
@@ -113,7 +113,7 @@
               <% @reviews.each do |rev| %>
                 <hr />
                 <div class="review">
-                  ☆<%= rev.reputation %>
+                  <%= "★" * rev.reputation %>
                   <% if rev.user.user_type == 1 %>
                       <%= link_to rev.user.username, student_path(rev.user.id) %> <%= rev.created_at.strftime("%Y年%m月%d日 %H時%M分") %><br />
                   <% elsif rev.user.user_type == 2 %>
