@@ -27,7 +27,6 @@ Rails.application.routes.draw do
       post 'reported'
       get 'account'
       post 'confirm_account'
-      post 'save_account'
       get 'search_bank'
       get 'select_bank'
       get 'search_store'

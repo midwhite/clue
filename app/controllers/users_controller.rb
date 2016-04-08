@@ -194,19 +194,6 @@ class UsersController < ApplicationController
     end
   end
   
-  def save_account
-    @account = Account.find_or_create_by(user_id: current_user.id)
-    @store = BankDatum.find(params[:q])
-    @account.bank_id = @store.bank_id
-    @account.bank_name = @store.bank_name
-    @account.store_id = @store.store_id
-    @account.store_name = @store.store_name
-    @account.account_id = params[:account_id]
-    @account.user_name = params[:user_name]
-    @account.save!
-    redirect_to user_path(current_user.id)
-  end
-
   def report
     @reported_account = ReportedAccount.new
     @user = User.find(params[:user_id])

@@ -19,13 +19,13 @@
             </tr>
             <tr>
                 <th>口座番号</th>
-                <td><%= params[:account][:account_id] %></td>
+                <td><%= params[:account_id] %></td>
             </tr>
             <tr>
                 <th>名義</th>
-                <td><%= params[:account][:user_name] %></td>
+                <td><%= params[:user_name] %></td>
             </tr>
     </table>
-    <%= button_to '登録', save_account_users_path(q: @store.id, account_id: params[:account][:account_id], user_name: params[:account][:user_name]) %>
+    <%= button_to '登録', accounts_path(q: @store.id, account_id: params[:account][:account_id], user_name: params[:account][:user_name]) %>
     <%= link_to '戻る', account_users_path(q: @store.id, account_id: params[:account][:account_id], user_name: params[:account][:user_name]) %>
 </div>
