@@ -193,7 +193,7 @@ class UsersController < ApplicationController
       render action: :account and return
     end
   end
-
+  
   def report
     @reported_account = ReportedAccount.new
     @user = User.find(params[:user_id])
@@ -216,6 +216,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def submit_params
     params.require(:user).permit(:username, :avatar, :job, :grade, :post_number, :area, :address, :tel, :line_id, :profile, :search_permit, :permit_info_mail, :absent_span, :block, :reported, :family_name, :first_name, :family_name_kana, :first_name_kana, :identification_image, absence_triggers_attributes: [:classroom, :harm, :antipathy, :teacher, :friendship, :study, :change_school, :neglect, :dv, :poverty, :parents, :no_reason]).merge(name: "#{params[:user][:family_name]} #{params[:user][:first_name]}", name_kana: "#{params[:user][:family_name_kana]} #{params[:user][:first_name_kana]}")
   end
