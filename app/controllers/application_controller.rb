@@ -193,7 +193,7 @@ class ApplicationController < ActionController::Base
   end
   
   def unread_message_count
-      @unread_message_count = current_user.receive_messages.where(opened:1).count
+      @unread_message_count = current_user.receive_messages.where(opened:nil).count
   end
 
 end
