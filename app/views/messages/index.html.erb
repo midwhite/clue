@@ -35,8 +35,14 @@
                 <p><%= distance_of_time_in_words_to_now(latest_message.updated_at) %> 前</p>
               </td>
               <td>
-                <%# CSS で全般的に <a> はブロック要素になっているので %>
-                <p><%= link_to user.username, user_path, style: "display: inline;" %> との最新メッセージ</p>
+                <p>
+                  <% if user.user_type != 0 %>
+                    <%# CSS で全般的に <a> はブロック要素になっているので %>
+                    <%= link_to user.username, user_path, style: "display: inline;" %> との最新メッセージ
+                  <% else %>
+                    管理者 との最新メッセージ
+                  <% end %>
+                </p>
                 <% if latest_message.message.present? %>
                   <%= latest_message.message %>
                 <% end %>
