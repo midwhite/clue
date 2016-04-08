@@ -47,9 +47,7 @@
                     <li>
                       <%= link_to messages_path, data: {toggle: "tooltip", placement: "bottom" }, title: "メッセージ", :method => :get do %>
                         <i class="fa fa-comments-o"></i> メッセージ
-                        <% if true #ここに，新着メールがきてたらって処理をかく%>
-                          <span id="mail_num"><%= 2 %></span>
-                        <% end %>
+                          <span id="mail_num"><%= @unread_message_count %></span>
                       <% end %>
                     <li>
                       <%= link_to "#my_page_menu", :id => "mypage_menu", class: "lightbox_button" do %>
