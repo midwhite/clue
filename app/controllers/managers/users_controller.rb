@@ -55,6 +55,10 @@ class Managers::UsersController < ApplicationController
     redirect_to managers_users_path
   end
   
+  def reports
+    @user = User.find(params[:id])
+  end
+  
   private
 
   def search_params
