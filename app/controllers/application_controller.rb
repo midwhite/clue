@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_common_data
+  before_action :unread_message_count
 
   private
   def configure_permitted_parameters
@@ -189,6 +190,14 @@ class ApplicationController < ActionController::Base
 
   def set_user_type_params
     @user_type_params = user_type_params
+  end
+  
+  def unread_message_count
+    if user_signed_in?
+      @unread_message_count = current_user.receive_messages.where(opened:nil).count
+    else
+      @unread_message_count = 0
+    end
   end
 
 end
