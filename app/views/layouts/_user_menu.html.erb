@@ -50,7 +50,7 @@
                             <i class="fa fa-comments-o"></i> メッセージ
                           </span>
                         <% if true #ここに，新着メールがきてたらって処理をかく%>
-                          <span id="mail_num"><%= @unread_message_count %></span>
+                          <span id="mail_num"><%= current_user.receive_messages.where(opened:nil).count %></span>
                         <% end %>
                       <% end %>
                     <li>
