@@ -37,13 +37,27 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
+    @message.receiver_id = params[:receiver_id] 
     @receiver = User.find(params[:receiver_id])
+    @messages = new_past_messages(params[:receiver_id])
+    
+    @messages.each do | past_message |
+      if past_message.receiver_id == current_user.id && past_message.opened.blank?
+        past_message.update(opened: 1)
+      end
+    end
+    
+    # 未読件数をアップデート
+    unread_message_count
+    
     add_breadcrumb 'メッセージボックス', messages_path
     add_breadcrumb '新規作成'
   end
 
   def create
     @message = Message.create(submit_params)
+    @new_message = Message.new
+    @new_message.receiver_id = @message.receiver_id
     @messages = new_past_messages(@message.receiver_id)
   end
 

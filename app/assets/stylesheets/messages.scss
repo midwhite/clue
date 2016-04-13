@@ -120,6 +120,10 @@
   }
 }
 
+.unread_message {
+  color: #F00;
+}
+
 @media screen and (max-width:767px) { 
     /*　画面サイズが767px以下の場合読み込む　*/
    .past-message {
