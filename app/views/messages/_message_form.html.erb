@@ -7,7 +7,7 @@
     <%= f.label :title, '本文' %>
     <%= f.text_area :message, rows: 15, cols: 60 %><br />
     <%= f.hidden_field :sender_id, value: current_user.id %><br />
-    <%= f.hidden_field :receiver_id, value: params[:receiver_id] %>
+    <%= f.hidden_field :receiver_id, value: message.receiver_id %>
     <%= f.hidden_field :sent, value: 1 %>
     <%= f.submit '送信' %>
   </div>
