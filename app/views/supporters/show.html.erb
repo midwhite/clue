@@ -145,8 +145,9 @@
         <% if current_user.user_type != 3 && current_user.user_type != 4 %>
   　<div class="btn-toolbar">
     　<div class="btn-group">
-     <button type="button" class="btn btn-default btn-lg"><%= link_to 'チケット購入', ( @ticket.nil? ? 'javascript:void(0);' : new_offer_path(ticket_id: @ticket.id)) %></button>
-           
+     <!--<button type="button" class="btn btn-default btn-lg"><%= link_to 'チケット購入', ( @ticket.nil? ? 'javascript:void(0);' : new_offer_path(ticket_id: @ticket.id)) %></button>-->
+     <button type="button" class="btn btn-default btn-lg"><%= link_to 'チケット購入','https://spike.cc/shop/user_169183216/products/qg7Ac8mA' %></button>
+
       <button type="button" class="btn btn-default btn-lg"><%= link_to '通報', report_users_path(user_id: params[:id]), method: :post %></button>
 
         <% end %>

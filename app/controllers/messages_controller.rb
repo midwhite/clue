@@ -27,10 +27,10 @@ class MessagesController < ApplicationController
     @user = @ticket.user  if @ticket
     @status = ['調整中','確定待ち','確定済み']
     @messages = show_past_messages
-    # 既読つける
-    if @message.receiver_id == current_user.id
-      @message.update(opened: 1)
-    end
+    
+#    if @message.receiver_id == current_user.id
+#      @message.update(opened: 1)
+#    end
     add_breadcrumb 'メッセージボックス', messages_path
     add_breadcrumb 'メッセージ'
   end
@@ -38,8 +38,6 @@ class MessagesController < ApplicationController
   def new
     @message = Message.new
     @receiver = User.find(params[:receiver_id])
-    @messages = new_past_messages(params[:receiver_id])
-    
     add_breadcrumb 'メッセージボックス', messages_path
     add_breadcrumb '新規作成'
   end
