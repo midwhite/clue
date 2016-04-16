@@ -14,7 +14,10 @@ class OffersController < ApplicationController
         '過去に購入したチケットです。']
     else
       # 先輩もしくはカウンセラー
-      @offers = current_user.ticket.offers
+      unless current_user.ticket
+        render template: 'offers/no_ticket' and return
+      end
+      @offers = current_user.ticket.offers if current_user.ticket != nil
       @offers_name = ['確定待ち', '調整中', '販売履歴']
       @status_message = [
         '申込者の承認待ちです。',
