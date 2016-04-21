@@ -1,34 +1,41 @@
 <div id="wrap">
-<div class="touroku" style="background-color:#f5f6d9; ">
-<div class="low">
-   <div class="col-ms-6 col-ms-offset-3">
+　<div class="touroku" style="background-color:#f5f6d9; ">
+　　<div class="low">
+   　　<div class="col-ms-6 col-ms-offset-3">
 <center><h2 style="font-size:1.5em;">新規会員登録</h2></br></center>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+
 <div class="form-group new-touroku">
   <div class="col-xs-10 col-sm-10 col-md-4">
     <%= f.label :email, 'メールアドレス' %>
-  </div>
+  </div><!--col-xs-10 col-sm-10 col-md-4-->
+  
   <div class="col-xs-10 col-sm-10 col-md-8">
       <%= f.email_field :email, class: 'form-control'%><br />
-  </div>
+  </div><!--col-xs-10 col-sm-10 col-md-8-->
+  　
   <div class="col-xs-10 col-sm-10 col-md-4">
     <%= f.label :password, 'パスワード' %>
     <% if @minimum_password_length %>
     <p><em>(<%= @minimum_password_length %>文字以上)</em></p>
     <% end %>
-  </div>
+  </div><!--col-xs-10 col-sm-10 col-md-4-->
+  
   <div class="col-xs-10 col-sm-10 col-md-8">
     <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-  </div><br />
+  </div><!--col-xs-10 col-sm-10 col-md-8--><br />
+  
   <div class="col-xs-10 col-sm-10 col-md-4">
     <%= f.label :password_confirmation, 'パスワード（確認）' %>
-  </div>
+  </div><!--col-xs-10 col-sm-10 col-md-4-->
+  
   <div class="col-xs-10 col-sm-10 col-md-8">
     <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
-  </div><br />
-</div>
+  </div><!--col-xs-10 col-sm-10 col-md-8--><br />
+</div><!--form-group new-touroku-->
+
 <form class="form-horizontal">
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-8">
@@ -36,23 +43,25 @@
 				<label>
 					<input type="checkbox" value="checkboxA"> <%= link_to 'Clue利用規約', '/terms' %>
 				</label>
-			</div>
-		</div>
-	</div>
+			</div><!--form-group-->
+		</div><!--col-sm-offset-4 col-sm-8-->
+	</div><!--checkbox-->
 </form>
 
 
   <div class="form-group">
     <div class="col-sm-offset-4 col-sm-8  btn-mar-left">
       <%= f.submit "規定に同意して登録する",class: "btn btn-primary"  %>
-    </div>
-  </div>
-</div>
-
+    </div><!--form-group-->
+  </div><!--col-sm-offset-4 col-sm-8  btn-mar-left-->
+ 
+  </div><!--"col-ms-6 col-ms-offset--->
+</div><!--wrap-->
+</div><!--touroku-->
+</div><!--low-->
   
 <% end %>
 
+
 <%#= render "devise/shared/links" %>
-</div>
-</div>
-</div>
+
