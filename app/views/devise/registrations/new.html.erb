@@ -13,9 +13,10 @@
   </div><!--col-xs-10 col-sm-10 col-md-4-->
   
   <div class="col-xs-10 col-sm-10 col-md-8">
-      <%= f.email_field :email, class: 'form-control'%><br />
+      <%= f.email_field :email, class: 'form-control'%>
   </div><!--col-xs-10 col-sm-10 col-md-8-->
-  　
+  <br />
+
   <div class="col-xs-10 col-sm-10 col-md-4">
     <%= f.label :password, 'パスワード' %>
     <% if @minimum_password_length %>
@@ -25,7 +26,8 @@
   
   <div class="col-xs-10 col-sm-10 col-md-8">
     <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-  </div><!--col-xs-10 col-sm-10 col-md-8--><br />
+  </div><!--col-xs-10 col-sm-10 col-md-8-->
+  <br />
   
   <div class="col-xs-10 col-sm-10 col-md-4">
     <%= f.label :password_confirmation, 'パスワード（確認）' %>
@@ -33,25 +35,25 @@
   
   <div class="col-xs-10 col-sm-10 col-md-8">
     <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
-  </div><!--col-xs-10 col-sm-10 col-md-8--><br />
+  </div><!--col-xs-10 col-sm-10 col-md-8-->
+
 </div><!--form-group new-touroku-->
 
-<form class="form-horizontal">
-	<div class="form-group">
-		<div class="col-sm-offset-4 col-sm-8">
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" value="checkboxA"> <%= link_to 'Clue利用規約', '/terms' %>
-				</label>
-			</div><!--form-group-->
-		</div><!--col-sm-offset-4 col-sm-8-->
-	</div><!--checkbox-->
-</form>
-
+<div class="form-group">
+  <table class="table" style="height:260px; display:block; overflow-y:auto; width:100%;">
+    <tbody>
+      <tr>
+        <td>
+<%= render partial: "shared/terms_content" %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
   <div class="form-group">
     <div class="col-sm-offset-4 col-sm-8  btn-mar-left">
-      <%= f.submit "規定に同意して登録する",class: "btn btn-primary"  %>
+      <%= f.submit "Clue利用規約に同意して登録する",class: "btn btn-primary"  %>
     </div><!--form-group-->
   </div><!--col-sm-offset-4 col-sm-8  btn-mar-left-->
  
