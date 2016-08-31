@@ -21,5 +21,10 @@ test:
   database: db/test.mysql2
 
 production:
-  <<: *default
-  database: db/production.mysql2
+  encoding: utf8
+  adapter: postgresql
+  port: 5432
+  username: geacpfhbrybfvg
+  host: ec2-54-221-201-244.compute-1.amazonaws.com
+  database: d1vd5cakb1mir2
+  password: gKIJ0Mn2kZZSVPZTT1T7ATiIng
