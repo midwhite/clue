@@ -1,8 +1,5 @@
 require 'csv'
 
-Bank.delete_all
-BankDatum.delete_all
-
 # Heroku の無料版MySQLは１時間に3200クエリという上限があるので、
 # 500レコードを一括で入れる
 banks = []
