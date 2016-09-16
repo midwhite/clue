@@ -1,6 +1,7 @@
 class Managers::EventsController < ApplicationController
   layout 'admin'
   before_action :authenticate_user!
+  before_action :before_manager_action
 
   add_breadcrumb '管理トップ', :managers_index_path
   add_breadcrumb '新着情報管理', nil, :only => [:index, :search, :show]
