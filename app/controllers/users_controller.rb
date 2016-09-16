@@ -87,6 +87,24 @@ class UsersController < ApplicationController
     if complete_registration_info
       # 正常な処理
       User.find(current_user.id).update(name: "#{params[:user][:family_name]} #{params[:user][:first_name]}", name_kana: "#{params[:user][:family_name_kana]} #{params[:user][:first_name_kana]}", first_name: params[:user][:first_name], family_name: params[:user][:family_name], first_name_kana: params[:user][:first_name_kana], family_name_kana: params[:user][:family_name_kana], post_number: params[:user][:post_number], area: params[:user][:area], address: params[:user][:address], tel: params[:user][:tel], line_id: params[:user][:line_id], grade: params[:user][:grade], job: params[:user][:job], school: params[:user][:school], absent_span: params[:user][:absent_span], avatar: params[:user][:avatar])
+      current_user.name = "#{params[:user][:family_name]} #{params[:user][:first_name]}"
+      current_user.name_kana = "#{params[:user][:family_name_kana]} #{params[:user][:first_name_kana]}"
+      current_user.first_name = params[:user][:first_name]
+      current_user.family_name = params[:user][:family_name]
+      current_user.first_name_kana = params[:user][:first_name_kana]
+      current_user.family_name_kana = params[:user][:family_name_kana]
+      current_user.post_number = params[:user][:post_number]
+      current_user.area = params[:user][:area]
+      current_user.address = params[:user][:address]
+      current_user.tel = params[:user][:tel]
+      current_user.line_id = params[:user][:line_id]
+      current_user.grade = params[:user][:grade]
+      current_user.job = params[:user][:job]
+      current_user.school = params[:user][:school]
+      current_user.absent_span = params[:user][:absent_span]
+      # current_user.avatar = params[:user][:avatar]
+      current_user.save
+
       if params[:absence_trigger].present?
         AbsenceTrigger.where(user_id: current_user.id).first_or_create(initial_trigger_params)
       end

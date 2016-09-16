@@ -11,6 +11,7 @@
       <table class="table table-bordere">
 
         <tbody>
+          <% if @inbox_users.present? %>
           <% @inbox_users.each.with_index do | inbox_user, i | %>
             <% user = User.find(inbox_user.sender_id) %>
             <% latest_message = @inbox
@@ -55,6 +56,7 @@
               </td>
             </tr>
           <% end %>
+          <% end %>
         </tbody>
       </table>
     </div><!-- //end of jyushin -->
@@ -62,6 +64,7 @@
     <div id="soushin" class="tab-pane fade">
       <table class="table table-bordere">
         <tbody>
+          <% if @outbox_users.present? %>
           <% @outbox_users.each.with_index do | outbox_user, i | %>
             <% user = User.find(outbox_user.receiver_id) %>
             <% latest_message = @outbox.where(receiver_id: user.id)
@@ -102,6 +105,7 @@
                 <%= link_to "メッセージを見る", new_message_path(receiver_id: user.id) %>
               </td>
             </tr>
+          <% end %>
           <% end %>
         </tbody>
       </table>
