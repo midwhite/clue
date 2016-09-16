@@ -1,6 +1,7 @@
 class Managers::MessagesController < ApplicationController
   layout 'admin'
   before_action :authenticate_user!
+  before_action :before_manager_action
 
   add_breadcrumb '管理トップ', :managers_index_path
   add_breadcrumb 'メッセージ管理', nil, :only => [:index, :search]
