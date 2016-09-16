@@ -8,7 +8,11 @@ class Diary < ActiveRecord::Base
 
   def self.search_params(key, params)
     if params.present?
-      where("#{key} like ?", "%#{params}%")
+      if key == 'user_id'
+        where(user_id: params)
+      else
+        where("#{key} like ?", "%#{params}%")
+      end
     else
       order(updated_at: :desc)
     end
