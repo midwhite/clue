@@ -2,6 +2,7 @@ class Managers::UsersController < ApplicationController
   layout 'admin'
   before_action :authenticate_user!
   before_action :set_user_type_params, :only => [:index, :search]
+  before_action :before_manager_action
 
   add_breadcrumb '管理トップ', :managers_index_path
   add_breadcrumb 'ユーザー管理', nil, :only => [:index, :search]

@@ -200,4 +200,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def before_manager_action
+    if user_signed_in?
+      unless current_user.user_type == 0
+        redirect_to root_path
+      end
+    end
+  end
 end
