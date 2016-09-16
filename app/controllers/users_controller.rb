@@ -102,7 +102,7 @@ class UsersController < ApplicationController
       current_user.job = params[:user][:job]
       current_user.school = params[:user][:school]
       current_user.absent_span = params[:user][:absent_span]
-      # current_user.avatar = params[:user][:avatar]
+      current_user.avatar = params[:user][:avatar]
       current_user.save
 
       if params[:absence_trigger].present?

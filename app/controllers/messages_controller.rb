@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
                       .order(updated_at: :desc)
     @outbox_users = Message.where(sender_id: current_user.id)
                         .order(updated_at: :desc).select(:receiver_id).uniq
-      
+
     add_breadcrumb 'メッセージボックス', messages_path
   end
 
