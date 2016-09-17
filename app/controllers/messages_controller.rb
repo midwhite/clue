@@ -8,11 +8,11 @@ class MessagesController < ApplicationController
     @inbox = Message.where(receiver_id: current_user.id, sent: 1)
                     .order(updated_at: :desc)
     @inbox_users = Message.where(receiver_id: current_user.id, sent: 1)
-                        .order(updated_at: :desc).select(:sender_id).uniq
+                        .order(updated_at: :desc).pluck(:sender_id).uniq
     @outbox = Message.where(sender_id: current_user.id)
                       .order(updated_at: :desc)
     @outbox_users = Message.where(sender_id: current_user.id)
-                        .order(updated_at: :desc).select(:receiver_id).uniq
+                        .order(updated_at: :desc).pluck(:receiver_id).uniq
 
     add_breadcrumb 'メッセージボックス', messages_path
   end
