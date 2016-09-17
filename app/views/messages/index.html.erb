@@ -13,7 +13,7 @@
         <tbody>
           <% if @inbox_users.present? %>
           <% @inbox_users.each.with_index do | inbox_user, i | %>
-            <% user = User.find(inbox_user.sender_id) %>
+            <% user = User.find(inbox_user) %>
             <% latest_message = @inbox
                                   .where(sender_id: user.id)
                                   .first %>
@@ -66,7 +66,7 @@
         <tbody>
           <% if @outbox_users.present? %>
           <% @outbox_users.each.with_index do | outbox_user, i | %>
-            <% user = User.find(outbox_user.receiver_id) %>
+            <% user = User.find(outbox_user) %>
             <% latest_message = @outbox.where(receiver_id: user.id)
                                   .first %>
             <tr>
